@@ -1,71 +1,76 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="gl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Estudio Ambiental del Regato de Nogueiredo</title>
+  <title data-i18n="site.title">Estudo Ambiental do Regato de Nogueiredo</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
   <header>
-    <h1>Estudio Ambiental del Regato de Nogueiredo</h1>
-    <p>Caracterización multielemental e isotópica de un sistema fluvial afectado por arsénico (Castrelo de Miño, Ourense)</p>
+    <div class="lang-switch">
+      <button id="btn-gl">GL</button>
+      <button id="btn-en">EN</button>
+    </div>
+    <h1 data-i18n="site.title">Estudo Ambiental do Regato de Nogueiredo</h1>
+    <p data-i18n="site.subtitle">Caracterización multielemental e isotópica dun sistema fluvial afectado por arsénico (Castrelo de Miño, Ourense)</p>
   </header>
 
   <nav>
-    <a href="#inicio">Inicio</a>
-    <a href="#problema">El problema</a>
-    <a href="#metodologia">Metodología</a>
-    <a href="#elementos">Elementos analizados</a>
-    <a href="#resultados">Resultados</a>
-    <a href="#conclusiones">Conclusiones</a>
-    <a href="#sobre">Sobre el proyecto</a>
+    <a href="#inicio" data-i18n="nav.inicio">Inicio</a>
+    <a href="#problema" data-i18n="nav.problema">O problema</a>
+    <a href="#metodologia" data-i18n="nav.metodologia">Metodoloxía</a>
+    <a href="#elementos" data-i18n="nav.elementos">Elementos analizados</a>
+    <a href="#resultados" data-i18n="nav.resultados">Resultados</a>
+    <a href="#conclusiones" data-i18n="nav.conclusiones">Conclusións</a>
+    <a href="#sobre" data-i18n="nav.sobre">Sobre o proxecto</a>
   </nav>
 
   <main>
 
     <section id="inicio">
-      <h2>Inicio</h2>
-      <p>Aquí irá el resumen del proyecto.</p>
+      <h2 data-i18n="inicio.titulo">Inicio</h2>
+      <p data-i18n="inicio.texto">Aquí irá o resumo do proxecto.</p>
     </section>
 
     <section id="problema">
-      <h2>El problema</h2>
-      <p>Aquí irá el contexto sobre el arsénico en Galicia.</p>
+      <h2 data-i18n="problema.titulo">O problema</h2>
+      <p data-i18n="problema.texto">Aquí irá o contexto sobre o arsénico en Galicia.</p>
     </section>
 
     <section id="metodologia">
-      <h2>Metodología</h2>
-      <p>Aquí irán las técnicas analíticas empleadas.</p>
+      <h2 data-i18n="metodologia.titulo">Metodoloxía</h2>
+      <p data-i18n="metodologia.texto">Aquí irán as técnicas analíticas empregadas.</p>
     </section>
 
     <section id="elementos">
-      <h2>Elementos analizados</h2>
-      <p>Aquí irá la tabla periódica interactiva.</p>
+      <h2 data-i18n="elementos.titulo">Elementos analizados</h2>
+      <p data-i18n="elementos.texto">Aquí irá a táboa periódica interactiva.</p>
     </section>
 
     <section id="resultados">
-      <h2>Resultados</h2>
-      <p>Aquí irán el mapa interactivo y el modelo predictivo.</p>
+      <h2 data-i18n="resultados.titulo">Resultados</h2>
+      <p data-i18n="resultados.texto">Aquí irán o mapa interactivo e o modelo preditivo.</p>
     </section>
 
     <section id="conclusiones">
-      <h2>Conclusiones</h2>
-      <p>Aquí irán las conclusiones del estudio.</p>
+      <h2 data-i18n="conclusiones.titulo">Conclusións</h2>
+      <p data-i18n="conclusiones.texto">Aquí irán as conclusións do estudo.</p>
     </section>
 
     <section id="sobre">
-      <h2>Sobre el proyecto</h2>
-      <p>Aquí irá información sobre la autora y enlaces relevantes.</p>
+      <h2 data-i18n="sobre.titulo">Sobre o proxecto</h2>
+      <p data-i18n="sobre.texto">Aquí irá información sobre a autora e ligazóns relevantes.</p>
     </section>
 
   </main>
 
   <footer>
-    <p>&copy; 2026 · Universidade de Vigo</p>
+    <p>&copy; 2026 · <span data-i18n="footer.texto">Universidade de Vigo</span></p>
   </footer>
 
+  <script src="data/translations.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

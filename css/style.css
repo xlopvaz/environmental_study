@@ -1,0 +1,117 @@
+/* ===== Variables de color y tipografía ===== */
+:root {
+  --color-fondo: #f7f6f3;
+  --color-texto: #2b2b2b;
+  --color-primario: #1c3d5a;   /* azul oscuro, tipo académico */
+  --color-secundario: #3e7c59; /* verde tierra, tema ambiental */
+  --color-borde: #d8d5cf;
+  --fuente-titulos: "Georgia", "Times New Roman", serif;
+  --fuente-texto: "Segoe UI", Arial, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--fuente-texto);
+  color: var(--color-texto);
+  background-color: var(--color-fondo);
+  line-height: 1.6;
+}
+
+/* ===== Cabecera ===== */
+header {
+  background-color: var(--color-primario);
+  color: white;
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+header h1 {
+  font-family: var(--fuente-titulos);
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+header p {
+  font-size: 1rem;
+  max-width: 700px;
+  margin: 0 auto;
+  opacity: 0.9;
+}
+
+/* ===== Navegación ===== */
+nav {
+  background-color: white;
+  border-bottom: 1px solid var(--color-borde);
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 1rem;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--color-primario);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+nav a:hover {
+  color: var(--color-secundario);
+}
+
+/* ===== Secciones ===== */
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+section {
+  padding: 3rem 0;
+  border-bottom: 1px solid var(--color-borde);
+}
+
+section h2 {
+  font-family: var(--fuente-titulos);
+  color: var(--color-primario);
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+/* ===== Footer ===== */
+footer {
+  text-align: center;
+  padding: 2rem;
+  color: #777;
+  font-size: 0.85rem;
+}
+.lang-switch {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.lang-switch button {
+  background: none;
+  border: 1px solid white;
+  color: white;
+  padding: 0.3rem 0.8rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+  border-radius: 4px;
+}
+
+.lang-switch button:hover {
+  background-color: white;
+  color: var(--color-primario);
+}
