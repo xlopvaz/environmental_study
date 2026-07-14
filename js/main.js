@@ -14,6 +14,12 @@ function setLanguage(lang) {
   localStorage.setItem("preferredLang", lang);
 
   if (document.getElementById("periodic-table")) renderPeriodicTable();
+  const searchEl = document.getElementById("glossary-search");
+if (searchEl) searchEl.placeholder = lang === "gl" ? "Buscar un termo..." : "Search a term...";
+if (typeof renderGlossary === "function") renderGlossary(searchEl ? searchEl.value : "");
+  if (typeof mainMap !== "undefined" && mainMap) drawMainMarkers();
+if (typeof phMap !== "undefined" && phMap) drawPhMarkers();
+if (typeof lastWeatherData !== "undefined" && lastWeatherData) renderLiveCard(lastWeatherData.current, lastWeatherData.last30Sum, lastWeatherData.pctOfNormal);
 }
 
 document.getElementById("btn-gl").addEventListener("click", () => setLanguage("gl"));

@@ -73,6 +73,13 @@ const translations = {
     "resultados.factorTotal": "Factor total aplicado",
     "resultados.puntosSuperan": "Puntos que superan o límite legal",
     "resultados.rangoEstimado": "Rango estimado",
+    "resultados.subtitulo3": "Estimación en tempo real",
+    "resultados.liveDesc": "Combina o tempo meteorolóxico actual en Castrelo de Miño co modelo de dilución pluviométrica.",
+    "resultados.liveLoading": "Cargando datos meteorolóxicos...",
+    "resultados.liveNota": "Precipitación de referencia aproximada para a rexión de Ourense (~70 mm/mes, AEMET). pH asumido: 6,75 (valor de referencia do regato). Esta estimación é orientativa e non substitúe unha medida real.",
+    "nav.glosario": "Glosario",
+    "glosario.titulo": "Glosario",
+    "glosario.intro": "Termos técnicos empregados neste traballo, explicados en linguaxe sinxela.",
   },
   en: {
     "site.title": "Environmental Study of the Nogueiredo Stream",
@@ -148,5 +155,12 @@ const translations = {
     "resultados.factorTotal": "Total factor applied",
     "resultados.puntosSuperan": "Points exceeding the legal limit",
     "resultados.rangoEstimado": "Estimated range",
+    "resultados.subtitulo3": "Live estimate",
+    "resultados.liveDesc": "Combines current weather in Castrelo de Miño with the rainfall dilution model.",
+    "resultados.liveLoading": "Loading weather data...",
+    "resultados.liveNota": "Approximate reference rainfall for the Ourense region (~70 mm/month, AEMET). Assumed pH: 6.75 (stream reference value). This estimate is indicative and does not replace an actual measurement.",
+    "nav.glosario": "Glossary",
+    "glosario.titulo": "Glossary",
+    "glosario.intro": "Technical terms used in this work, explained in plain language.",
   }
 };

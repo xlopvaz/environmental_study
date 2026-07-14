@@ -26,6 +26,7 @@
     <a href="#elementos" data-i18n="nav.elementos">Elementos analizados</a>
     <a href="#resultados" data-i18n="nav.resultados">Resultados</a>
     <a href="#conclusiones" data-i18n="nav.conclusiones">Conclusións</a>
+    <a href="#glosario" data-i18n="nav.glosario">Glosario</a>
     <a href="#sobre" data-i18n="nav.sobre">Sobre o proxecto</a>
   </nav>
 
@@ -87,6 +88,7 @@
 </div>
     </section>
 
+</div>
     <section id="resultados">
   <h2 data-i18n="resultados.titulo">Resultados</h2>
   <p data-i18n="resultados.p1">Mapa interactivo coa concentración de arsénico ao longo do regato de Nogueiredo.</p>
@@ -166,6 +168,17 @@
 
     <p class="ph-desc" id="ph-desc-text"></p>
   </div>
+  <h3 data-i18n="resultados.subtitulo3">Estimación en tempo real</h3>
+  <p class="data-badge-inline">
+    <span class="data-badge model" data-i18n="resultados.badgeModel">MODELO</span>
+    <span data-i18n="resultados.liveDesc">Combina o tempo meteorolóxico actual en Castrelo de Miño co modelo de dilución pluviométrica.</span>
+  </p>
+
+  <div class="live-card" id="live-card">
+    <p class="live-loading" id="live-loading" data-i18n="resultados.liveLoading">Cargando datos meteorolóxicos...</p>
+  </div>
+
+  <p class="map-note" data-i18n="resultados.liveNota">Precipitación de referencia aproximada para a rexión de Ourense (~70 mm/mes, AEMET). pH asumido: 6,75 (valor de referencia do regato). Esta estimación é orientativa e non substitúe unha medida real.</p>
 </section>
 
     <section id="conclusiones">
@@ -173,6 +186,15 @@
   <p data-i18n="conclusiones.p1">...</p>
   <p data-i18n="conclusiones.p2">...</p>
   <p data-i18n="conclusiones.p3">...</p>
+</section>
+
+<section id="glosario">
+  <h2 data-i18n="glosario.titulo">Glosario</h2>
+  <p data-i18n="glosario.intro">Termos técnicos empregados neste traballo, explicados en linguaxe sinxela.</p>
+
+  <input type="text" id="glossary-search" class="glossary-search" placeholder="">
+
+  <div id="glossary-list" class="glossary-list"></div>
 </section>
 
 <section id="sobre">
@@ -199,8 +221,11 @@
   <script src="data/periodic-positions.js"></script>
   <script src="data/measured-elements.js"></script>
   <script src="data/sample-points.js"></script>
+  <script src="data/glossary.js"></script>
   <script src="js/periodic-table.js"></script>
   <script src="js/map.js"></script>
+  <script src="js/live-estimate.js"></script>
+  <script src="js/glossary.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
