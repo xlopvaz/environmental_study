@@ -321,3 +321,162 @@ section h3 {
 .resource-list a:hover {
   text-decoration: underline;
 }
+.scenario-selector {
+  display: flex;
+  gap: 0.6rem;
+  margin: 1.5rem 0;
+  flex-wrap: wrap;
+}
+
+.scenario-btn {
+  flex: 1;
+  min-width: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.9rem;
+  background: white;
+  border: 1px solid var(--color-borde);
+  cursor: pointer;
+  font-family: var(--fuente-texto);
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.scenario-btn:hover {
+  background: var(--color-fondo);
+}
+
+.scenario-btn.active {
+  border-color: var(--color-primario);
+  background: var(--color-fondo);
+  font-weight: 600;
+}
+
+.scenario-icon {
+  font-size: 1.3rem;
+}
+
+.scenario-range {
+  font-size: 0.75rem;
+  color: var(--color-secundario);
+}
+
+.map-container {
+  width: 100%;
+  height: 480px;
+  border: 1px solid var(--color-borde);
+  margin-top: 1rem;
+}
+
+.map-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.8rem;
+  font-size: 0.8rem;
+}
+
+.map-note {
+  font-size: 0.8rem;
+  color: #888;
+  margin-top: 1rem;
+  font-style: italic;
+}
+.data-warning {
+  background: #fdf6ec;
+  border-left: 4px solid #c0793b;
+  padding: 1rem 1.2rem;
+  margin: 1.2rem 0;
+}
+
+.data-warning strong {
+  display: block;
+  color: #a8631f;
+  margin-bottom: 0.4rem;
+  font-size: 0.9rem;
+}
+
+.data-warning p {
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.data-badge {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+}
+
+.data-badge.real {
+  background: #dbe9dd;
+  color: #2f5233;
+}
+
+.data-badge.model {
+  background: #f3e3cf;
+  color: #8a5a24;
+}
+
+.data-badge-inline {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ph-model {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: var(--color-fondo);
+  border: 1px solid var(--color-borde);
+}
+
+.ph-slider-group {
+  margin-bottom: 1.5rem;
+}
+
+.ph-slider-group label {
+  display: block;
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.ph-slider-group input[type="range"] {
+  width: 100%;
+}
+
+.slider-scale {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  color: #999;
+  margin-top: 0.2rem;
+}
+
+.ph-scale-bar {
+  display: flex;
+  height: 8px;
+  margin-top: 0.4rem;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.ph-scale-bar div {
+  flex: 1;
+}
+
+.ph-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.8rem;
+  margin: 1.2rem 0;
+}
+
+.ph-desc {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--color-secundario);
+  min-height: 1.2rem;
+}

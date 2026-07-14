@@ -6,6 +6,8 @@
   <title data-i18n="site.title">Estudo Ambiental do Regato de Nogueiredo</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <body>
 
   <header>
@@ -86,9 +88,85 @@
     </section>
 
     <section id="resultados">
-      <h2 data-i18n="resultados.titulo">Resultados</h2>
-      <p data-i18n="resultados.texto">Aquí irán o mapa interactivo e o modelo preditivo.</p>
-    </section>
+  <h2 data-i18n="resultados.titulo">Resultados</h2>
+  <p data-i18n="resultados.p1">Mapa interactivo coa concentración de arsénico ao longo do regato de Nogueiredo.</p>
+
+  <div class="data-warning">
+    <strong data-i18n="resultados.avisoTitulo">⚠ Datos reais vs. modelo preditivo</strong>
+    <p data-i18n="resultados.aviso">Os únicos valores medidos experimentalmente mediante ICP-MS-TOF no CACTI (Universidade de Vigo) corresponden ao escenario <strong>Húmido</strong> (mostraxe de marzo de 2026). Os escenarios Normal e Seco, así como o modelo de pH, son <strong>estimacións</strong> baseadas en correlacións empíricas e na literatura científica — non substitúen unha medida real.</p>
+  </div>
+
+  <h3 data-i18n="resultados.subtitulo1">Escenarios pluviométricos</h3>
+  <p data-i18n="resultados.p2">Selecciona un escenario e fai clic en calquera punto do mapa para ver a concentración de As.</p>
+
+  <div class="scenario-selector">
+    <button class="scenario-btn active" id="btn-wet" data-scenario="wet">
+      <span class="data-badge real" data-i18n="resultados.badgeReal">DATOS REAIS</span>
+      <span class="scenario-icon">🌧️</span>
+      <span data-i18n="resultados.wet">Húmido</span>
+      <span class="scenario-range">7,6 – 16 µg/L</span>
+    </button>
+    <button class="scenario-btn" id="btn-normal" data-scenario="normal">
+      <span class="data-badge model" data-i18n="resultados.badgeModel">MODELO</span>
+      <span class="scenario-icon">⛅</span>
+      <span data-i18n="resultados.normal">Normal</span>
+      <span class="scenario-range">11 – 24 µg/L</span>
+    </button>
+    <button class="scenario-btn" id="btn-dry" data-scenario="dry">
+      <span class="data-badge model" data-i18n="resultados.badgeModel">MODELO</span>
+      <span class="scenario-icon">☀️</span>
+      <span data-i18n="resultados.dry">Seco</span>
+      <span class="scenario-range">23 – 48 µg/L</span>
+    </button>
+  </div>
+
+  <div id="map-container" class="map-container"></div>
+  <div class="map-legend" id="map-legend"></div>
+  <p class="map-note" data-i18n="resultados.nota">Escenarios normal e seco estimados a partir da correlación entre precipitación acumulada e [As] (ρ = -0,71; p = 0,048).</p>
+
+  <h3 data-i18n="resultados.subtitulo2">Modelo avanzado: precipitación + pH</h3>
+  <p data-i18n="resultados.p3" class="data-badge-inline"><span class="data-badge model" data-i18n="resultados.badgeModel">MODELO</span> <span data-i18n="resultados.p3text">Combina a dilución pluviométrica coa adsorción do As sobre óxidos de ferro segundo o pH da auga, baseado en Smedley &amp; Kinniburgh (2002).</span></p>
+
+  <div class="ph-model">
+    <div class="ph-slider-group">
+      <label for="precip-slider"><span data-i18n="resultados.precipLabel">Precipitación acumulada</span>: <strong id="precip-value">150%</strong></label>
+      <input type="range" id="precip-slider" min="30" max="200" value="150" step="5">
+      <div class="slider-scale"><span data-i18n="resultados.seco">Seco</span><span data-i18n="resultados.humedo">Húmido</span></div>
+    </div>
+
+    <div class="ph-slider-group">
+      <label for="ph-slider"><span data-i18n="resultados.phLabel">pH da auga</span>: <strong id="ph-value">6,5</strong></label>
+      <input type="range" id="ph-slider" min="50" max="95" value="65" step="5">
+      <div class="ph-scale-bar">
+        <div style="background:#c0392b" title="pH 5.0-5.5"></div>
+        <div style="background:#d17a3a" title="pH 5.5-6.0"></div>
+        <div style="background:#4a7c59" title="pH 6.0-7.0 (óptimo)"></div>
+        <div style="background:#c8a84b" title="pH 7.0-7.5"></div>
+        <div style="background:#d17a3a" title="pH 7.5-8.0"></div>
+        <div style="background:#c0392b" title="pH 8.0-9.5"></div>
+      </div>
+      <div class="slider-scale"><span>pH 5,0</span><span>pH 9,5</span></div>
+    </div>
+<div id="ph-map-container" class="map-container"></div>
+    <div class="map-legend" id="ph-map-legend"></div>
+    <div class="ph-stats">
+      <div class="stat-card">
+        <div class="stat-label" data-i18n="resultados.factorTotal">Factor total aplicado</div>
+        <div class="stat-value" id="total-factor">×1,00</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label" data-i18n="resultados.puntosSuperan">Puntos que superan o límite legal</div>
+        <div class="stat-value" id="points-over">0 / 25</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label" data-i18n="resultados.rangoEstimado">Rango estimado</div>
+        <div class="stat-value" id="estimated-range">7,6 – 16,0 µg/L</div>
+      </div>
+    </div>
+
+    <p class="ph-desc" id="ph-desc-text"></p>
+  </div>
+</section>
 
     <section id="conclusiones">
   <h2 data-i18n="conclusiones.titulo">Conclusións</h2>
@@ -116,10 +194,13 @@
     <p>&copy; 2026 · <span data-i18n="footer.texto">Universidade de Vigo</span></p>
   </footer>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
   <script src="data/translations.js"></script>
   <script src="data/periodic-positions.js"></script>
   <script src="data/measured-elements.js"></script>
+  <script src="data/sample-points.js"></script>
   <script src="js/periodic-table.js"></script>
+  <script src="js/map.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
