@@ -92,6 +92,19 @@ nav a:hover {
   color: var(--color-secundario);
 }
 
+.nav-cta {
+  background: var(--color-secundario);
+  color: white !important;
+  padding: 0.4rem 0.9rem;
+  border-radius: 4px;
+  font-weight: 700 !important;
+}
+
+.nav-cta:hover {
+  background: var(--color-primario);
+  color: white !important;
+}
+
 /* ===== Secciones ===== */
 main {
   max-width: 900px;

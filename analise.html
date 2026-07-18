@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="analise.pageTitle">Análise avanzada — Estudo Ambiental do Regato de Nogueiredo</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/analise.css">
+</head>
+<body>
+
+  <header class="analise-header">
+    <div class="lang-switch">
+      <button id="btn-gl">GL</button>
+      <button id="btn-en">EN</button>
+    </div>
+    <a href="index.html" class="back-link" data-i18n="analise.backLink">← Volver á web principal</a>
+    <h1 data-i18n="analise.titulo">Análise avanzada</h1>
+    <p data-i18n="analise.subtitulo">Figuras técnicas e estatísticas para consulta detallada. Esta sección complementa a memoria completa do TFG.</p>
+  </header>
+
+  <main class="analise-main">
+
+    <section id="correlacions">
+      <h2 data-i18n="analise.corrTitulo">Matriz de correlacións de Spearman (augas)</h2>
+      <p data-i18n="analise.corrIntro">Correlación entre pares de elementos nas 27 mostras de auga do regato de Nogueiredo e proximidades. Fai clic nunha cela para ver o detalle. A cor indica a forza e o sentido da correlación.</p>
+
+      <div class="corr-legend">
+        <div class="corr-legend-scale">
+          <span>-1</span>
+          <div class="corr-gradient"></div>
+          <span>+1</span>
+        </div>
+      </div>
+
+      <div class="corr-matrix-wrapper">
+        <div id="corr-matrix" class="corr-matrix"></div>
+      </div>
+
+      <div class="corr-detail" id="corr-detail">
+        <p class="corr-detail-empty" data-i18n="analise.corrHint">Selecciona unha cela da matriz para ver a interpretación.</p>
+      </div>
+
+      <p class="map-note" data-i18n="analise.corrNota">ρ = coeficiente de correlación de Spearman. |ρ| > 0,7 indica unha correlación forte; entre 0,4 e 0,7, moderada; por debaixo de 0,4, débil. N = 27 mostras.</p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 · <span data-i18n="footer.texto">Universidade de Vigo</span></p>
+  </footer>
+
+  <script src="data/translations.js"></script>
+  <script src="data/correlations.js"></script>
+  <script src="js/analise.js"></script>
+</body>
+</html>

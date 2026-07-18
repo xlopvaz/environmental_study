@@ -1,0 +1,136 @@
+.analise-header {
+  background-color: var(--color-primario);
+  color: white;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  position: relative;
+}
+
+.back-link {
+  display: inline-block;
+  color: white;
+  opacity: 0.85;
+  font-size: 0.85rem;
+  text-decoration: none;
+  margin-bottom: 1rem;
+}
+
+.back-link:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.analise-header h1 {
+  font-family: var(--fuente-titulos);
+  font-size: 1.9rem;
+  font-weight: 400;
+  margin-bottom: 0.6rem;
+}
+
+.analise-header p {
+  font-size: 0.9rem;
+  opacity: 0.85;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.analise-main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem;
+}
+
+.corr-legend {
+  margin: 1.5rem 0;
+}
+
+.corr-legend-scale {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.75rem;
+  color: #888;
+  max-width: 300px;
+}
+
+.corr-gradient {
+  flex: 1;
+  height: 10px;
+  background: linear-gradient(to right, rgb(255,75,75), white, rgb(75,75,255));
+  border: 1px solid var(--color-borde);
+}
+
+.corr-matrix-wrapper {
+  overflow-x: auto;
+  margin-top: 1rem;
+}
+
+.corr-matrix {
+  display: grid;
+  gap: 1px;
+  min-width: 600px;
+}
+
+.corr-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  padding: 0.4rem 0.2rem;
+}
+
+.corr-header {
+  font-weight: 700;
+  color: var(--color-primario);
+  background: var(--color-fondo);
+}
+
+.corr-value {
+  cursor: pointer;
+  color: #333;
+  transition: transform 0.1s;
+}
+
+.corr-value:hover {
+  transform: scale(1.1);
+  z-index: 2;
+  box-shadow: 0 0 0 2px var(--color-primario);
+}
+
+.corr-value.diagonal {
+  cursor: default;
+  background: #ddd !important;
+  color: #999;
+}
+
+.corr-value.selected {
+  outline: 2px solid var(--color-primario);
+  outline-offset: -2px;
+  font-weight: 700;
+}
+
+.corr-detail {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: white;
+  border: 1px solid var(--color-borde);
+  min-height: 80px;
+}
+
+.corr-detail h3 {
+  font-family: var(--fuente-titulos);
+  color: var(--color-primario);
+  margin-bottom: 0.8rem;
+}
+
+.corr-detail-empty {
+  color: #999;
+  text-align: center;
+}
+
+.corr-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.7rem;
+  margin-bottom: 1rem;
+}
