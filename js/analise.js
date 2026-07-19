@@ -115,5 +115,94 @@ function showCorrDetail(row, col, value) {
     <p>${l.interpretation}</p>
   `;
 }
+let asChart = null;
+let srChart = null;
 
+function renderAsProfileChart() {
+  const canvas = document.getElementById("chart-as-profile");
+  if (!canvas) return;
+
+  const lang = currentLang === "gl" ? "gl" : "en";
+  const labels = samplePoints.map(p => p.id.toUpperCase());
+  const values = samplePoints.map(p => p.as);
+  const limitLine = new Array(samplePoints.length).fill(10);
+
+  const legendLabels = {
+    gl: { as: "As (µg/L)", limit: "Límite legal" },
+    en: { as: "As (µg/L)", limit: "Legal limit" }
+  };
+  const l = legendLabels[lang];
+
+  if (asChart) asChart.destroy();
+
+  asChart = new Chart(canvas, {
+    type: "line",
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          label: l.as,
+          data: values,
+          borderColor: "#1c3d5a",
+          backgroundColor: "rgba(28,61,90,0.08)",
+          fill: true,
+          tension: 0.25,
+          pointRadius: 3
+        },
+        {
+          label: l.limit,
+          data: limitLine,
+          borderColor: "#c0392b",
+          borderDash: [6, 4],
+          pointRadius: 0,
+          fill: false
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { position: "top" } },
+      scales: {
+        y: { title: { display: true, text: "µg/L" } },
+        x: { title: { display: true, text: lang === "gl" ? "Punto de mostraxe" : "Sampling point" } }
+      }
+    }
+  });
+}
+
+function renderSrProfileChart() {
+  const canvas = document.getElementById("chart-sr-profile");
+  if (!canvas) return;
+
+  const labels = srIsotopeData.map(p => p.point);
+  const values = srIsotopeData.map(p => p.ratio);
+
+  if (srChart) srChart.destroy();
+
+  srChart = new Chart(canvas, {
+    type: "line",
+    data: {
+      labels: labels,
+      datasets: [{
+        label: "87Sr/86Sr",
+        data: values,
+        borderColor: "#3e7c59",
+        backgroundColor: "rgba(62,124,89,0.08)",
+        fill: true,
+        tension: 0.15,
+        pointRadius: 4
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { display: false } },
+      scales: {
+        y: { title: { display: true, text: "87Sr/86Sr" } },
+        x: { title: { display: true, text: currentLang === "gl" ? "Punto (augas arriba → desembocadura)" : "Point (upstream → mouth)" } }
+      }
+    }
+  });
+}
 renderCorrMatrix();
+renderAsProfileChart();
+  renderSrProfileChart();

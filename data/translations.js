@@ -95,6 +95,12 @@ const translations = {
     "analise.corrHint": "Selecciona unha cela da matriz para ver a interpretación.",
     "analise.corrNota": "ρ = coeficiente de correlación de Spearman. |ρ| > 0,7 indica unha correlación forte; entre 0,4 e 0,7, moderada; por debaixo de 0,4, débil. N = 27 mostras.",
     "nav.analise": "Análise avanzada →",
+    "analise.perfilTitulo": "Perfil lonxitudinal do regato",
+    "analise.perfilIntro": "Evolución das concentracións ao longo do curso do regato, dende a cabeceira ata a desembocadura.",
+    "analise.perfilAsTitulo": "Arsénico (auga, 25 puntos)",
+    "analise.perfilAsNota": "Liña vermella discontinua: límite legal (10 µg/L). Datos da primeira campaña de mostraxe (marzo 2026).",
+    "analise.perfilSrTitulo": "Relación isotópica 87Sr/86Sr (auga, 5 puntos)",
+    "analise.perfilSrNota": "Puntos da segunda campaña de mostraxe, ordenados dende augas arriba (1) ata a desembocadura (5). As barras de erro representan a precisión interna (2SD) do MC-ICP-MS.",
   },
   en: {
     "site.title": "Environmental Study of the Nogueiredo Stream",
@@ -189,5 +195,11 @@ const translations = {
     "analise.corrHint": "Select a matrix cell to see the interpretation.",
     "analise.corrNota": "ρ = Spearman correlation coefficient. |ρ| > 0.7 indicates a strong correlation; 0.4–0.7, moderate; below 0.4, weak. N = 27 samples.",
     "nav.analise": "Advanced analysis →",
+    "analise.perfilTitulo": "Longitudinal stream profile",
+    "analise.perfilIntro": "Evolution of concentrations along the stream course, from headwater to mouth.",
+    "analise.perfilAsTitulo": "Arsenic (water, 25 points)",
+    "analise.perfilAsNota": "Dashed red line: legal limit (10 µg/L). Data from the first sampling campaign (March 2026).",
+    "analise.perfilSrTitulo": "87Sr/86Sr isotope ratio (water, 5 points)",
+    "analise.perfilSrNota": "Points from the second sampling campaign, ordered from upstream (1) to the mouth (5). Error bars represent MC-ICP-MS internal precision (2SD).",
   }
 };
