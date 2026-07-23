@@ -127,6 +127,7 @@ const translations = {
     "historico.2026btexto": "Recóllense 27 mostras de auga e mostras de sedimento e biota en dúas campañas (2 e 12 de marzo), coa análise multielemental e isotópica que dá lugar a este traballo.",
     "historico.2026ctitulo": "Presentación do TFG",
     "historico.2026ctexto": "Preséntase este Traballo de Fin de Grao na Facultade de Química da Universidade de Vigo (xuño de 2026).",
+    "banner.loading": "Cargando estimación en directo...",
   },
   en: {
     "site.title": "Environmental Study of the Nogueiredo Stream",
@@ -253,5 +254,6 @@ const translations = {
     "historico.2026btexto": "27 water samples and sediment/biota samples are collected over two campaigns (2 and 12 March), with the multi-elemental and isotopic analysis that gives rise to this work.",
     "historico.2026ctitulo": "Thesis presentation",
     "historico.2026ctexto": "This Bachelor's Thesis is presented at the Faculty of Chemistry, University of Vigo (June 2026).",
+    "banner.loading": "Loading live estimate...",
   }
 };
