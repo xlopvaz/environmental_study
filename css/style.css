@@ -819,3 +819,20 @@ section h3 {
 .live-banner-link:hover {
   text-decoration: underline;
 }
+@media (max-width: 600px) {
+  .live-banner {
+    flex-wrap: wrap;
+    text-align: center;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.72rem;
+    line-height: 1.4;
+  }
+
+  .live-banner-text {
+    width: 100%;
+  }
+
+  .live-banner-link {
+    font-size: 0.7rem;
+  }
+}
