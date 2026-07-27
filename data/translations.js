@@ -128,6 +128,9 @@ const translations = {
     "historico.2026ctitulo": "Presentación do TFG",
     "historico.2026ctexto": "Preséntase este Traballo de Fin de Grao na Facultade de Química da Universidade de Vigo (xuño de 2026).",
     "banner.loading": "Cargando estimación en directo...",
+    "nav.faq": "FAQ",
+    "faq.titulo": "Preguntas frecuentes",
+    "faq.intro": "Dúbidas habituais sobre a problemática do arsénico e este proxecto.",
   },
   en: {
     "site.title": "Environmental Study of the Nogueiredo Stream",
@@ -255,5 +258,8 @@ const translations = {
     "historico.2026ctitulo": "Thesis presentation",
     "historico.2026ctexto": "This Bachelor's Thesis is presented at the Faculty of Chemistry, University of Vigo (June 2026).",
     "banner.loading": "Loading live estimate...",
+    "nav.faq": "FAQ",
+    "faq.titulo": "Frequently asked questions",
+    "faq.intro": "Common questions about the arsenic issue and this project.",
   }
 };

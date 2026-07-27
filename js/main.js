@@ -20,6 +20,8 @@ if (typeof phMap !== "undefined" && phMap) drawPhMarkers();
 if (typeof lastWeatherData !== "undefined" && lastWeatherData) renderLiveCard(lastWeatherData.current, lastWeatherData.last30Sum, lastWeatherData.pctOfNormal, lastWeatherData.climateNormal);
 if (typeof renderLiveBanner === "function") renderLiveBanner();
 if (typeof renderIcpmsDiagram === "function") renderIcpmsDiagram();
+if (typeof renderIcpmsDiagram === "function") renderIcpmsDiagram();
+if (typeof renderFaq === "function") renderFaq();
 }
 
 document.getElementById("btn-gl").addEventListener("click", () => setLanguage("gl"));
