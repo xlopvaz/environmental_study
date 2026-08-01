@@ -32,6 +32,7 @@
 
       <h3 data-i18n="analise.datosT1Titulo">Campaña 1 — Augas do regato (02/03/2026)</h3>
       <p class="map-note" data-i18n="analise.datosT1Nota">27 mostras (m1-m27). Unidades: µg/L.</p>
+<p class="map-note" data-i18n="analise.datosM26M27">As mostras m26 e m27 corresponden a auga de billa doméstica, recollida á medianoite e á primeira hora da mañá respectivamente, para avaliar o efecto do estancamento na rede de distribución. Cómpre lembrar que toda a mostraxe se realizou nun período de precipitacións excepcionalmente elevadas (150% sobre a referencia histórica), polo que os valores de As aquí reflectidos representan a máxima dilución posible e non son representativos de condicións normais ou secas.</p>
       <input type="text" id="datos-search-1" class="glossary-search" placeholder="">
       <div class="data-table-wrapper">
         <table class="data-table" id="table-waters1"></table>
@@ -126,6 +127,14 @@
       </div>
     </section>
 
+<section id="pca-real">
+      <h2 data-i18n="analise.pcaRealTitulo">PCA calculado en directo</h2>
+      <p data-i18n="analise.pcaRealIntro">Biplot real, calculado no navegador a partir dos datos de augas (10 elementos con dato completo nas 27 mostras: Ca, Fe, Co, Ni, Ga, As, Rb, Sr, Ba, U). Os puntos son as mostras; as frechas indican a dirección e importancia de cada elemento.</p>
+      <div class="pca-schematic-note" data-i18n="analise.pcaRealAviso">⚠ Cálculo propio realizado con JavaScript no navegador. Pode diferir lixeiramente da análise orixinal en R (Figura 6) por decisións metodolóxicas (elementos incluídos, tratamento doutros valores baixo o LOD).</div>
+      <div id="pca-biplot-container" class="pca-biplot-container"></div>
+      <p class="map-note" id="pca-variance-note"></p>
+    </section>
+
   </main>
 
   <footer>
@@ -137,6 +146,7 @@
   <script src="data/sample-points.js"></script>
   <script src="data/sr-isotopes.js"></script>
   <script src="data/full-results.js"></script>
+  <script src="js/pca-real.js"></script>
   <script src="js/analise.js"></script>
   <script src="js/datos.js"></script>
   <script src="js/comparador.js"></script>

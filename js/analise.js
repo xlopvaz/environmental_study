@@ -301,6 +301,7 @@ function setLanguage(lang) {
     renderComparador(document.getElementById("comp-element-select").value);
   }
   if (typeof renderMiniMap === "function") renderMiniMap();
+  if (typeof renderPcaBiplot === "function") renderPcaBiplot();
 }
 
 document.getElementById("btn-gl").addEventListener("click", () => setLanguage("gl"));

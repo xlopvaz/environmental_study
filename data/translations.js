@@ -143,6 +143,10 @@ const translations = {
     "analise.compNota": "Escala logarítmica. Barras = media dos puntos dispoñibles nesa matriz. Augas en µg/L; resto en mg/kg (unidades distintas, comparación só orientativa da magnitude relativa).",
     "analise.perfilAsTitulo": "Perfil multielemental (auga, 27 puntos)",
     "analise.perfilMultiIntro": "Selecciona ata 4 elementos para comparar a súa evolución ao longo do regato.",
+    "analise.datosM26M27": "As mostras m26 e m27 corresponden a auga de billa doméstica, recollida á medianoite e á primeira hora da mañá respectivamente, para avaliar o efecto do estancamento na rede de distribución. Cómpre lembrar que toda a mostraxe se realizou nun período de precipitacións excepcionalmente elevadas (150% sobre a referencia histórica), polo que os valores de As aquí reflectidos representan a máxima dilución posible e non son representativos de condicións normais ou secas.",
+    "analise.pcaRealTitulo": "PCA calculado en directo",
+    "analise.pcaRealIntro": "Biplot real, calculado no navegador a partir dos datos de augas (10 elementos con dato completo nas 27 mostras: Ca, Fe, Co, Ni, Ga, As, Rb, Sr, Ba, U). Os puntos son as mostras; as frechas indican a dirección e importancia de cada elemento.",
+    "analise.pcaRealAviso": "⚠ Cálculo propio realizado con JavaScript no navegador. Pode diferir lixeiramente da análise orixinal en R (Figura 6) por decisións metodolóxicas (elementos incluídos, tratamento doutros valores baixo o LOD).",
   },
   en: {
     "site.title": "Environmental Study of the Nogueiredo Stream",
@@ -285,5 +289,9 @@ const translations = {
     "analise.compNota": "Logarithmic scale. Bars = mean of available points in that matrix. Water in µg/L; rest in mg/kg (different units, comparison only indicative of relative magnitude).",
     "analise.perfilAsTitulo": "Multi-element profile (water, 27 points)",
     "analise.perfilMultiIntro": "Select up to 4 elements to compare their evolution along the stream.",
+    "analise.datosM26M27": "Samples m26 and m27 correspond to domestic tap water, collected at midnight and early morning respectively, to assess the effect of stagnation in the distribution network. It should be noted that all sampling took place during a period of exceptionally high rainfall (150% above the historical reference), so the As values shown here represent maximum dilution and are not representative of normal or dry conditions.",
+    "analise.pcaRealTitulo": "Live-computed PCA",
+    "analise.pcaRealIntro": "Real biplot, computed in the browser from water data (10 elements with complete data across all 27 samples: Ca, Fe, Co, Ni, Ga, As, Rb, Sr, Ba, U). Points are samples; arrows show each element's direction and importance.",
+    "analise.pcaRealAviso": "⚠ Own calculation performed with JavaScript in the browser. May differ slightly from the original R analysis (Figure 6) due to methodological choices (elements included, handling of values below the LOD).",
   }
 };
