@@ -87,6 +87,7 @@ function setLanguage(lang) {
   document.documentElement.lang = lang;
   localStorage.setItem("preferredLang", lang);
   renderCorrMatrix();
+  if (typeof renderDataTables === "function") renderDataTables();
 }
 
 document.getElementById("btn-gl").addEventListener("click", () => setLanguage("gl"));

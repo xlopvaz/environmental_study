@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="gl">
 <head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title data-i18n="analise.pageTitle">Análise avanzada — Estudo Ambiental do Regato de Nogueiredo</title>
@@ -23,6 +25,27 @@
   </header>
 
   <main class="analise-main">
+
+    <section id="resultados-completos">
+      <h2 data-i18n="analise.datosTitulo">Resultados completos ICP-MS-TOF</h2>
+      <p data-i18n="analise.datosIntro">Concentracións medidas mediante ICP-MS-TOF nas dúas campañas de mostraxe. Formato: concentración (RSD %). As celas baleiras indican valores por debaixo do límite de detección.</p>
+
+      <div id="datos-mini-map" class="mini-map"></div>
+
+      <h3 data-i18n="analise.datosT1Titulo">Campaña 1 — Augas do regato (02/03/2026)</h3>
+      <p class="map-note" data-i18n="analise.datosT1Nota">27 mostras (m1-m27). Unidades: µg/L.</p>
+      <input type="text" id="datos-search-1" class="glossary-search" placeholder="">
+      <div class="data-table-wrapper">
+        <table class="data-table" id="table-waters1"></table>
+      </div>
+
+      <h3 data-i18n="analise.datosT2Titulo">Campaña 2 — Multimatriz (12/03/2026)</h3>
+<p class="map-note" data-i18n="analise.datosT2Nota">25 mostras: augas (1-5), sedimento biodispoñible (SB1-5), follas (H1-5), madeira (M1-2), miñocas (L1-3), sedimento total (S1-5). Unidades: augas en µg/L, resto en mg/kg.</p>
+      <input type="text" id="datos-search-2" class="glossary-search" placeholder="">
+      <div class="data-table-wrapper">
+        <table class="data-table" id="table-campaign2"></table>
+      </div>
+    </section>
 
     <section id="correlacions">
       <h2 data-i18n="analise.corrTitulo">Matriz de correlacións de Spearman (augas)</h2>
@@ -98,10 +121,13 @@
     <p>&copy; 2026 · <span data-i18n="footer.texto">Universidade de Vigo</span></p>
   </footer>
 
-  <script src="data/translations.js"></script>
+<script src="data/translations.js"></script>
 <script src="data/correlations.js"></script>
 <script src="data/sample-points.js"></script>
 <script src="data/sr-isotopes.js"></script>
+<script src="data/sample-points.js"></script>
+<script src="data/full-results.js"></script>
 <script src="js/analise.js"></script>
+<script src="js/datos.js"></script>
 </body>
 </html>

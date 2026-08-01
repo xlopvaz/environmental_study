@@ -131,6 +131,12 @@ const translations = {
     "nav.faq": "FAQ",
     "faq.titulo": "Preguntas frecuentes",
     "faq.intro": "Dúbidas habituais sobre a problemática do arsénico e este proxecto.",
+    "analise.datosTitulo": "Resultados completos ICP-MS-TOF",
+    "analise.datosIntro": "Concentracións medidas mediante ICP-MS-TOF nas dúas campañas de mostraxe. Formato: concentración (RSD %). As celas baleiras indican valores por debaixo do límite de detección.",
+    "analise.datosT1Titulo": "Campaña 1 — Augas do regato (02/03/2026)",
+    "analise.datosT1Nota": "27 mostras (m1-m27). Unidades: µg/L.",
+    "analise.datosT2Titulo": "Campaña 2 — Multimatriz (12/03/2026)",
+"analise.datosT2Nota": "25 mostras: augas (1-5), sedimento biodispoñible (SB1-5), follas (H1-5), madeira (M1-2), miñocas (L1-3), sedimento total (S1-5). Unidades: augas en µg/L, resto en mg/kg.",
   },
   en: {
     "site.title": "Environmental Study of the Nogueiredo Stream",
@@ -261,5 +267,11 @@ const translations = {
     "nav.faq": "FAQ",
     "faq.titulo": "Frequently asked questions",
     "faq.intro": "Common questions about the arsenic issue and this project.",
+    "analise.datosTitulo": "Full ICP-MS-TOF results",
+    "analise.datosIntro": "Concentrations measured by ICP-MS-TOF across both sampling campaigns. Format: concentration (RSD %). Empty cells indicate values below the detection limit.",
+    "analise.datosT1Titulo": "Campaign 1 — Stream water (02/03/2026)",
+    "analise.datosT1Nota": "27 samples (m1-m27). Units: µg/L.",
+    "analise.datosT2Titulo": "Campaign 2 — Multi-matrix (12/03/2026)",
+"analise.datosT2Nota": "25 samples: water (1-5), bioavailable sediment (SB1-5), leaves (H1-5), wood (M1-2), earthworms (L1-3), total sediment (S1-5). Units: water in µg/L, rest in mg/kg.",
   }
 };

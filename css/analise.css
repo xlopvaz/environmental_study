@@ -213,3 +213,65 @@
   color: var(--color-primario);
   margin-bottom: 0.8rem;
 }
+.data-table-wrapper {
+  overflow-x: auto;
+  margin: 1rem 0 2rem;
+  max-height: 500px;
+  overflow-y: auto;
+  border: 1px solid var(--color-borde);
+}
+
+.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.78rem;
+}
+
+.data-table thead {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.data-table th {
+  background: var(--color-primario);
+  color: white;
+  padding: 0.5rem 0.6rem;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.data-table td {
+  padding: 0.4rem 0.6rem;
+  text-align: center;
+  border-bottom: 1px solid var(--color-borde);
+  white-space: nowrap;
+}
+
+.data-id-cell {
+  font-weight: 700;
+  color: var(--color-primario);
+  background: var(--color-fondo);
+  position: sticky;
+  left: 0;
+}
+
+.empty-cell {
+  color: #ccc;
+}
+
+.rsd-tag {
+  font-size: 0.65rem;
+  color: #999;
+  margin-left: 2px;
+}
+
+.data-table tbody tr:hover {
+  background: var(--color-fondo);
+}
+.mini-map {
+  width: 100%;
+  height: 280px;
+  border: 1px solid var(--color-borde);
+  margin: 1rem 0 1.5rem;
+}
