@@ -136,7 +136,13 @@ const translations = {
     "analise.datosT1Titulo": "Campaña 1 — Augas do regato (02/03/2026)",
     "analise.datosT1Nota": "27 mostras (m1-m27). Unidades: µg/L.",
     "analise.datosT2Titulo": "Campaña 2 — Multimatriz (12/03/2026)",
-"analise.datosT2Nota": "25 mostras: augas (1-5), sedimento biodispoñible (SB1-5), follas (H1-5), madeira (M1-2), miñocas (L1-3), sedimento total (S1-5). Unidades: augas en µg/L, resto en mg/kg.",
+    "analise.datosT2Nota": "25 mostras: augas (1-5), sedimento biodispoñible (SB1-5), follas (H1-5), madeira (M1-2), miñocas (L1-3), sedimento total (S1-5). Unidades: augas en µg/L, resto en mg/kg.",
+    "analise.compTitulo": "Comparador de matrices",
+    "analise.compIntro": "Compara a concentración dun elemento entre as diferentes matrices ambientais analizadas na segunda campaña de mostraxe (auga, sedimento, follas, madeira, miñocas).",
+    "analise.compSelectorLabel": "Selecciona un elemento:",
+    "analise.compNota": "Escala logarítmica. Barras = media dos puntos dispoñibles nesa matriz. Augas en µg/L; resto en mg/kg (unidades distintas, comparación só orientativa da magnitude relativa).",
+    "analise.perfilAsTitulo": "Perfil multielemental (auga, 27 puntos)",
+    "analise.perfilMultiIntro": "Selecciona ata 4 elementos para comparar a súa evolución ao longo do regato.",
   },
   en: {
     "site.title": "Environmental Study of the Nogueiredo Stream",
@@ -272,6 +278,12 @@ const translations = {
     "analise.datosT1Titulo": "Campaign 1 — Stream water (02/03/2026)",
     "analise.datosT1Nota": "27 samples (m1-m27). Units: µg/L.",
     "analise.datosT2Titulo": "Campaign 2 — Multi-matrix (12/03/2026)",
-"analise.datosT2Nota": "25 samples: water (1-5), bioavailable sediment (SB1-5), leaves (H1-5), wood (M1-2), earthworms (L1-3), total sediment (S1-5). Units: water in µg/L, rest in mg/kg.",
+    "analise.datosT2Nota": "25 samples: water (1-5), bioavailable sediment (SB1-5), leaves (H1-5), wood (M1-2), earthworms (L1-3), total sediment (S1-5). Units: water in µg/L, rest in mg/kg.",
+    "analise.compTitulo": "Matrix comparator",
+    "analise.compIntro": "Compare an element's concentration across the different environmental matrices analyzed in the second sampling campaign (water, sediment, leaves, wood, earthworms).",
+    "analise.compSelectorLabel": "Select an element:",
+    "analise.compNota": "Logarithmic scale. Bars = mean of available points in that matrix. Water in µg/L; rest in mg/kg (different units, comparison only indicative of relative magnitude).",
+    "analise.perfilAsTitulo": "Multi-element profile (water, 27 points)",
+    "analise.perfilMultiIntro": "Select up to 4 elements to compare their evolution along the stream.",
   }
 };

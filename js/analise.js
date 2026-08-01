@@ -1,4 +1,4 @@
-// Color según el valor de correlación: rojo (negativo fuerte) -> blanco (0) -> azul (positivo fuerte)
+// ===== Matriz de correlacións =====
 function corrColor(value) {
   if (value >= 0) {
     const intensity = Math.round(value * 180);
@@ -19,82 +19,6 @@ function strengthLabel(value, lang) {
   if (abs >= 0.4) return labels[lang].moderate;
   return labels[lang].weak;
 }
-const pcaQuadrantData = {
-  1: {
-    gl: {
-      title: "Cuadrante superior-esquerdo — As",
-      text: "Só o As e as mostras da cabeceira e curso medio do regato aparecen agrupadas neste cuadrante. A presenza única do As aquí confirma que é o parámetro definitorio da calidade das augas no treito alto de Nogueiredo. A forte agrupación das mostras amosa unha fonte de achega xeoxénica constante e homoxénea dende o inicio do curso fluvial."
-    },
-    en: {
-      title: "Top-left quadrant — As",
-      text: "Only As and the headwater/mid-course samples are grouped in this quadrant. The unique presence of As here confirms it is the defining parameter of water quality in the upper stretch of Nogueiredo. The strong clustering of these samples shows a constant, homogeneous geogenic source from the start of the stream course."
-    }
-  },
-  2: {
-    gl: {
-      title: "Cuadrante superior-dereito — Influencia mineira",
-      text: "Mostra a influencia mineira e litolóxica, onde se localiza de xeito illado o punto m25. A asociación deste punto co U, Pb e Rb confirma unha natureza diferente, unha \"pegada química\" característica de zonas con influencias de mineralizacións graníticas e lixiviados mineiros, diferenciándose claramente do resto das mostras."
-    },
-    en: {
-      title: "Top-right quadrant — Mining influence",
-      text: "Shows mining and lithological influence, where point m25 is isolated. Its association with U, Pb and Rb confirms a different nature, a \"chemical fingerprint\" characteristic of areas influenced by granitic mineralization and mining leachates, clearly differentiating it from the rest of the samples."
-    }
-  },
-  3: {
-    gl: {
-      title: "Cuadrante inferior-dereito — Desembocadura",
-      text: "As mostras da desembocadura do regato aparecen aquí, xunto coa presenza do Fe, Sr, Ca e Zn. A posición do Fe e Zn en oposición ao As suxire que, ao longo do regato, o Fe pode estar actuando como sumidoiro xeoquímico, retirando o As da fase disolta mediante adsorción."
-    },
-    en: {
-      title: "Bottom-right quadrant — River mouth",
-      text: "The stream mouth samples appear here, together with Fe, Sr, Ca and Zn. The position of Fe and Zn in opposition to As suggests that, along the stream, Fe may act as a geochemical sink, removing As from the dissolved phase through adsorption."
-    }
-  },
-  4: {
-    gl: {
-      title: "Cuadrante inferior-esquerdo — Fondo xeoquímico",
-      text: "Inclúe as mostras do regato coas concentracións elementais máis baixas. Este cuadrante representa os niveis de referencia ou fondo xeoquímico natural do regato, onde a carga inicial de As atópase diluída pola achega de augas superficiais."
-    },
-    en: {
-      title: "Bottom-left quadrant — Geochemical background",
-      text: "Includes the stream samples with the lowest elemental concentrations. This quadrant represents the reference levels or natural geochemical background of the stream, where the initial As load is diluted by surface water input."
-    }
-  }
-};
-
-function showPcaDetail(quadrant) {
-  document.querySelectorAll(".pca-quadrant.selected").forEach(q => q.classList.remove("selected"));
-  document.getElementById("pca-q" + quadrant).classList.add("selected");
-
-  const lang = currentLang === "gl" ? "gl" : "en";
-  const data = pcaQuadrantData[quadrant][lang];
-
-  document.getElementById("pca-detail").innerHTML = `
-    <h3>${data.title}</h3>
-    <p>${data.text}</p>
-  `;
-}
-
-document.querySelectorAll(".pca-quadrant").forEach(q => {
-  q.addEventListener("click", () => showPcaDetail(q.dataset.quadrant));
-});
-function setLanguage(lang) {
-  currentLang = lang;
-  document.querySelectorAll("[data-i18n]").forEach(el => {
-    const key = el.getAttribute("data-i18n");
-    if (translations[lang][key]) el.textContent = translations[lang][key];
-  });
-  document.documentElement.lang = lang;
-  localStorage.setItem("preferredLang", lang);
-  renderCorrMatrix();
-  if (typeof renderDataTables === "function") renderDataTables();
-}
-
-document.getElementById("btn-gl").addEventListener("click", () => setLanguage("gl"));
-document.getElementById("btn-en").addEventListener("click", () => setLanguage("en"));
-
-const savedLang = localStorage.getItem("preferredLang") || "gl";
-setLanguage(savedLang);
 
 function renderCorrMatrix() {
   const container = document.getElementById("corr-matrix");
@@ -174,60 +98,94 @@ function showCorrDetail(row, col, value) {
     <p>${l.interpretation}</p>
   `;
 }
+
+// ===== Perfil lonxitudinal multielemental (As + outros, augas campaña 1) =====
 let asChart = null;
-let srChart = null;
+const PROFILE_COLORS = ["#1c3d5a", "#c0793b", "#3e7c59", "#8e6b8f", "#a05c5c", "#5f9ea0"];
+let selectedProfileElements = ["75As"];
+
+function getProfileElements() {
+  const keys = new Set();
+  resultsWaters1.forEach(row => Object.keys(row).forEach(k => { if (k !== "id") keys.add(k); }));
+  return Array.from(keys).sort();
+}
+
+function renderProfileCheckboxes() {
+  const container = document.getElementById("perfil-checkboxes");
+  if (!container) return;
+
+  const elements = getProfileElements();
+  container.innerHTML = elements.map(el => `
+    <label class="perfil-check-label">
+      <input type="checkbox" value="${el}" ${selectedProfileElements.includes(el) ? "checked" : ""}>
+      ${typeof formatIsotope === "function" ? formatIsotope(el) : el}
+    </label>
+  `).join("");
+
+  container.querySelectorAll("input[type=checkbox]").forEach(cb => {
+    cb.addEventListener("change", () => {
+      if (cb.checked) {
+        if (selectedProfileElements.length >= 4) {
+          cb.checked = false;
+          return;
+        }
+        selectedProfileElements.push(cb.value);
+      } else {
+        selectedProfileElements = selectedProfileElements.filter(v => v !== cb.value);
+      }
+      renderAsProfileChart();
+    });
+  });
+}
 
 function renderAsProfileChart() {
   const canvas = document.getElementById("chart-as-profile");
   if (!canvas) return;
 
-  const lang = currentLang === "gl" ? "gl" : "en";
-  const labels = samplePoints.map(p => p.id.toUpperCase());
-  const values = samplePoints.map(p => p.as);
-  const limitLine = new Array(samplePoints.length).fill(10);
+  const labels = resultsWaters1.map(p => p.id.toUpperCase());
 
-  const legendLabels = {
-    gl: { as: "As (µg/L)", limit: "Límite legal" },
-    en: { as: "As (µg/L)", limit: "Legal limit" }
-  };
-  const l = legendLabels[lang];
+  const datasets = selectedProfileElements.map((el, i) => ({
+    label: typeof formatIsotope === "function" ? formatIsotope(el) : el,
+    data: resultsWaters1.map(row => row[el] ? row[el][0] : null),
+    borderColor: PROFILE_COLORS[i % PROFILE_COLORS.length],
+    backgroundColor: "transparent",
+    tension: 0.25,
+    pointRadius: 3,
+    spanGaps: true
+  }));
+
+  if (selectedProfileElements.includes("75As")) {
+    datasets.push({
+      label: currentLang === "gl" ? "Límite legal (As)" : "Legal limit (As)",
+      data: new Array(labels.length).fill(10),
+      borderColor: "#c0392b",
+      borderDash: [6, 4],
+      pointRadius: 0,
+      fill: false
+    });
+  }
 
   if (asChart) asChart.destroy();
 
   asChart = new Chart(canvas, {
     type: "line",
-    data: {
-      labels: labels,
-      datasets: [
-        {
-          label: l.as,
-          data: values,
-          borderColor: "#1c3d5a",
-          backgroundColor: "rgba(28,61,90,0.08)",
-          fill: true,
-          tension: 0.25,
-          pointRadius: 3
-        },
-        {
-          label: l.limit,
-          data: limitLine,
-          borderColor: "#c0392b",
-          borderDash: [6, 4],
-          pointRadius: 0,
-          fill: false
-        }
-      ]
-    },
+    data: { labels, datasets },
     options: {
       responsive: true,
       plugins: { legend: { position: "top" } },
       scales: {
-        y: { title: { display: true, text: "µg/L" } },
-        x: { title: { display: true, text: lang === "gl" ? "Punto de mostraxe" : "Sampling point" } }
+        y: {
+          type: "logarithmic",
+          title: { display: true, text: currentLang === "gl" ? "Concentración (µg/L, escala log)" : "Concentration (µg/L, log scale)" }
+        },
+        x: { title: { display: true, text: currentLang === "gl" ? "Punto de mostraxe" : "Sampling point" } }
       }
     }
   });
 }
+
+// ===== Perfil isotópico de Sr =====
+let srChart = null;
 
 function renderSrProfileChart() {
   const canvas = document.getElementById("chart-sr-profile");
@@ -262,6 +220,91 @@ function renderSrProfileChart() {
     }
   });
 }
-renderCorrMatrix();
-renderAsProfileChart();
+
+// ===== PCA esquemático =====
+const pcaQuadrantData = {
+  1: {
+    gl: {
+      title: "Cuadrante superior-esquerdo — As",
+      text: "Só o As e as mostras da cabeceira e curso medio do regato aparecen agrupadas neste cuadrante. A presenza única do As aquí confirma que é o parámetro definitorio da calidade das augas no treito alto de Nogueiredo. A forte agrupación das mostras amosa unha fonte de achega xeoxénica constante e homoxénea dende o inicio do curso fluvial."
+    },
+    en: {
+      title: "Top-left quadrant — As",
+      text: "Only As and the headwater/mid-course samples are grouped in this quadrant. The unique presence of As here confirms it is the defining parameter of water quality in the upper stretch of Nogueiredo. The strong clustering of these samples shows a constant, homogeneous geogenic source from the start of the stream course."
+    }
+  },
+  2: {
+    gl: {
+      title: "Cuadrante superior-dereito — Influencia mineira",
+      text: "Mostra a influencia mineira e litolóxica, onde se localiza de xeito illado o punto m25. A asociación deste punto co U, Pb e Rb confirma unha natureza diferente, unha \"pegada química\" característica de zonas con influencias de mineralizacións graníticas e lixiviados mineiros, diferenciándose claramente do resto das mostras."
+    },
+    en: {
+      title: "Top-right quadrant — Mining influence",
+      text: "Shows mining and lithological influence, where point m25 is isolated. Its association with U, Pb and Rb confirms a different nature, a \"chemical fingerprint\" characteristic of areas influenced by granitic mineralization and mining leachates, clearly differentiating it from the rest of the samples."
+    }
+  },
+  3: {
+    gl: {
+      title: "Cuadrante inferior-dereito — Desembocadura",
+      text: "As mostras da desembocadura do regato aparecen aquí, xunto coa presenza do Fe, Sr, Ca e Zn. A posición do Fe e Zn en oposición ao As suxire que, ao longo do regato, o Fe pode estar actuando como sumidoiro xeoquímico, retirando o As da fase disolta mediante adsorción."
+    },
+    en: {
+      title: "Bottom-right quadrant — River mouth",
+      text: "The stream mouth samples appear here, together with Fe, Sr, Ca and Zn. The position of Fe and Zn in opposition to As suggests that, along the stream, Fe may act as a geochemical sink, removing As from the dissolved phase through adsorption."
+    }
+  },
+  4: {
+    gl: {
+      title: "Cuadrante inferior-esquerdo — Fondo xeoquímico",
+      text: "Inclúe as mostras do regato coas concentracións elementais máis baixas. Este cuadrante representa os niveis de referencia ou fondo xeoquímico natural do regato, onde a carga inicial de As atópase diluída pola achega de augas superficiais."
+    },
+    en: {
+      title: "Bottom-left quadrant — Geochemical background",
+      text: "Includes the stream samples with the lowest elemental concentrations. This quadrant represents the reference levels or natural geochemical background of the stream, where the initial As load is diluted by surface water input."
+    }
+  }
+};
+
+function showPcaDetail(quadrant) {
+  document.querySelectorAll(".pca-quadrant.selected").forEach(q => q.classList.remove("selected"));
+  document.getElementById("pca-q" + quadrant).classList.add("selected");
+
+  const lang = currentLang === "gl" ? "gl" : "en";
+  const data = pcaQuadrantData[quadrant][lang];
+
+  document.getElementById("pca-detail").innerHTML = `
+    <h3>${data.title}</h3>
+    <p>${data.text}</p>
+  `;
+}
+
+document.querySelectorAll(".pca-quadrant").forEach(q => {
+  q.addEventListener("click", () => showPcaDetail(q.dataset.quadrant));
+});
+
+// ===== Idioma =====
+function setLanguage(lang) {
+  currentLang = lang;
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const key = el.getAttribute("data-i18n");
+    if (translations[lang][key]) el.textContent = translations[lang][key];
+  });
+  document.documentElement.lang = lang;
+  localStorage.setItem("preferredLang", lang);
+
+  renderCorrMatrix();
+  renderAsProfileChart();
+  renderProfileCheckboxes();
   renderSrProfileChart();
+  if (typeof renderDataTables === "function") renderDataTables();
+  if (typeof renderComparador === "function" && document.getElementById("comp-element-select")) {
+    renderComparador(document.getElementById("comp-element-select").value);
+  }
+  if (typeof renderMiniMap === "function") renderMiniMap();
+}
+
+document.getElementById("btn-gl").addEventListener("click", () => setLanguage("gl"));
+document.getElementById("btn-en").addEventListener("click", () => setLanguage("en"));
+
+const savedLang = localStorage.getItem("preferredLang") || "gl";
+setLanguage(savedLang);

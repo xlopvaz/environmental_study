@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html lang="gl">
 <head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title data-i18n="analise.pageTitle">Análise avanzada — Estudo Ambiental do Regato de Nogueiredo</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/analise.css">
-  <link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/analise.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
 </head>
 <body>
 
@@ -40,10 +38,27 @@
       </div>
 
       <h3 data-i18n="analise.datosT2Titulo">Campaña 2 — Multimatriz (12/03/2026)</h3>
-<p class="map-note" data-i18n="analise.datosT2Nota">25 mostras: augas (1-5), sedimento biodispoñible (SB1-5), follas (H1-5), madeira (M1-2), miñocas (L1-3), sedimento total (S1-5). Unidades: augas en µg/L, resto en mg/kg.</p>
+      <p class="map-note" data-i18n="analise.datosT2Nota">25 mostras: augas (1-5), sedimento biodispoñible (SB1-5), follas (H1-5), madeira (M1-2), miñocas (L1-3), sedimento total (S1-5). Unidades: augas en µg/L, resto en mg/kg.</p>
       <input type="text" id="datos-search-2" class="glossary-search" placeholder="">
       <div class="data-table-wrapper">
         <table class="data-table" id="table-campaign2"></table>
+      </div>
+    </section>
+
+    <section id="comparador">
+      <h2 data-i18n="analise.compTitulo">Comparador de matrices</h2>
+      <p data-i18n="analise.compIntro">Compara a concentración dun elemento entre as diferentes matrices ambientais analizadas na segunda campaña de mostraxe (auga, sedimento, follas, madeira, miñocas).</p>
+
+      <label for="comp-element-select" class="comp-label" data-i18n="analise.compSelectorLabel">Selecciona un elemento:</label>
+      <select id="comp-element-select" class="comp-select"></select>
+
+      <div class="chart-container">
+        <canvas id="chart-comparador"></canvas>
+      </div>
+      <p class="map-note" data-i18n="analise.compNota">Escala logarítmica. Barras = media dos puntos dispoñibles nesa matriz. Augas en µg/L; resto en mg/kg (unidades distintas, comparación só orientativa da magnitude relativa).</p>
+
+      <div class="comp-detail-table-wrapper">
+        <table class="data-table" id="comp-detail-table"></table>
       </div>
     </section>
 
@@ -69,23 +84,18 @@
 
       <p class="map-note" data-i18n="analise.corrNota">ρ = coeficiente de correlación de Spearman. |ρ| > 0,7 indica unha correlación forte; entre 0,4 e 0,7, moderada; por debaixo de 0,4, débil. N = 27 mostras.</p>
     </section>
-<section id="perfil">
-      <h2 data-i18n="analise.perfilTitulo">Perfil lonxitudinal do regato</h2>
-      <p data-i18n="analise.perfilIntro">Evolución das concentracións ao longo do curso do regato, dende a cabeceira ata a desembocadura.</p>
 
-      <h3 data-i18n="analise.perfilAsTitulo">Arsénico (auga, 25 puntos)</h3>
-      <div class="chart-container">
-        <canvas id="chart-as-profile"></canvas>
-      </div>
-      <p class="map-note" data-i18n="analise.perfilAsNota">Liña vermella discontinua: límite legal (10 µg/L). Datos da primeira campaña de mostraxe (marzo 2026).</p>
-
-      <h3 data-i18n="analise.perfilSrTitulo">Relación isotópica 87Sr/86Sr (auga, 5 puntos)</h3>
-      <div class="chart-container">
-        <canvas id="chart-sr-profile"></canvas>
-      </div>
-      <p class="map-note" data-i18n="analise.perfilSrNota">Puntos da segunda campaña de mostraxe, ordenados dende augas arriba (1) ata a desembocadura (5). As barras de erro representan a precisión interna (2SD) do MC-ICP-MS.</p>
+    <section id="perfil">
+      <h3 data-i18n="analise.perfilAsTitulo">Perfil multielemental (auga, 27 puntos)</h3>
+<p data-i18n="analise.perfilMultiIntro">Selecciona ata 4 elementos para comparar a súa evolución ao longo do regato.</p>
+<div id="perfil-checkboxes" class="perfil-checkboxes"></div>
+<div class="chart-container">
+  <canvas id="chart-as-profile"></canvas>
+</div>
+<p class="map-note" data-i18n="analise.perfilAsNota">Escala logarítmica (os elementos teñen rangos de concentración moi distintos). Liña vermella discontinua: límite legal do As (10 µg/L). Datos da primeira campaña (marzo 2026, 27 puntos m1-m27).</p>
     </section>
-<section id="pca">
+
+    <section id="pca">
       <h2 data-i18n="analise.pcaTitulo">Análise de Compoñentes Principais (PCA)</h2>
       <p data-i18n="analise.pcaIntro">Representación esquemática dos catro cuadrantes identificados na PCA das augas do regato (25 mostras). PC1 explica un 54,4% da variabilidade e PC2 un 18,7% (73,1% acumulado).</p>
 
@@ -115,19 +125,20 @@
         <p class="corr-detail-empty" data-i18n="analise.pcaHint">Selecciona un cuadrante para ver a súa interpretación.</p>
       </div>
     </section>
+
   </main>
 
   <footer>
     <p>&copy; 2026 · <span data-i18n="footer.texto">Universidade de Vigo</span></p>
   </footer>
 
-<script src="data/translations.js"></script>
-<script src="data/correlations.js"></script>
-<script src="data/sample-points.js"></script>
-<script src="data/sr-isotopes.js"></script>
-<script src="data/sample-points.js"></script>
-<script src="data/full-results.js"></script>
-<script src="js/analise.js"></script>
-<script src="js/datos.js"></script>
+  <script src="data/translations.js"></script>
+  <script src="data/correlations.js"></script>
+  <script src="data/sample-points.js"></script>
+  <script src="data/sr-isotopes.js"></script>
+  <script src="data/full-results.js"></script>
+  <script src="js/analise.js"></script>
+  <script src="js/datos.js"></script>
+  <script src="js/comparador.js"></script>
 </body>
 </html>
