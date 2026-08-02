@@ -892,3 +892,52 @@ section h3 {
 .faq-answer.open {
   max-height: 500px;
 }
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  color: var(--color-primario);
+  cursor: pointer;
+  padding: 0.3rem 0.6rem;
+}
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0.6rem 1rem;
+  }
+
+  .nav-toggle {
+    display: block;
+    align-self: flex-end;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    text-align: center;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links a {
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--color-borde);
+  }
+
+  .nav-cta {
+    margin-top: 0.5rem;
+  }
+}

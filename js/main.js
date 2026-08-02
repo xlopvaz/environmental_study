@@ -30,3 +30,17 @@ document.getElementById("btn-en").addEventListener("click", () => setLanguage("e
 // Al cargar la página, usa el idioma guardado o gallego por defecto
 const savedLang = localStorage.getItem("preferredLang") || "gl";
 setLanguage(savedLang);
+
+const navToggle = document.getElementById("nav-toggle");
+const navLinks = document.getElementById("nav-links");
+
+if (navToggle && navLinks) {
+  navToggle.addEventListener("click", () => {
+    navLinks.classList.toggle("open");
+  });
+
+  // Cierra el menú automáticamente al pulsar un enlace (mejor experiencia en móbil)
+  navLinks.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => navLinks.classList.remove("open"));
+  });
+}
