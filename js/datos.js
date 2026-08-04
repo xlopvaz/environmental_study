@@ -32,7 +32,10 @@ function buildDataTable(tableId, data, hasPointCol) {
     usedElements.forEach(el => {
       if (row[el]) {
         const [val, rsd] = row[el];
-        tbody += `<td>${val}<span class="rsd-tag">±${rsd}%</span></td>`;
+        const sd = (val * rsd) / 100;
+        // Redondeo a 2 cifras significativas na SD, coherente coa precisión do dato
+        const sdRounded = sd >= 1 ? sd.toFixed(2) : sd.toPrecision(2);
+        tbody += `<td>${val}<span class="rsd-tag">±${sdRounded}</span></td>`;
       } else {
         tbody += `<td class="empty-cell">—</td>`;
       }
