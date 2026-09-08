@@ -19,9 +19,9 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
   if (!phMap) {
     phMap = L.map('ph-map-container', { center: [42.284, -8.112], zoom: 13 });
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-      attribution: '&copy; OpenStreetMap &copy; CARTO', subdomains: 'abcd', maxZoom: 19
-    }).addTo(phMap);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; OpenStreetMap contributors', subdomains: 'abc', maxZoom: 19
+}).addTo(mainMap);
     drawPhMarkers();
     renderMapLegend("ph-map-legend");
   }
