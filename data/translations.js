@@ -147,6 +147,8 @@ const translations = {
     "analise.pcaRealTitulo": "PCA calculado en directo",
     "analise.pcaRealIntro": "Biplot real, calculado no navegador a partir dos datos de augas (10 elementos con dato completo nas 27 mostras: Ca, Fe, Co, Ni, Ga, As, Rb, Sr, Ba, U). Os puntos son as mostras; as frechas indican a dirección e importancia de cada elemento.",
     "analise.pcaRealAviso": "⚠ Cálculo propio realizado con JavaScript no navegador. Pode diferir lixeiramente da análise orixinal en R (Figura 6) por decisións metodolóxicas (elementos incluídos, tratamento doutros valores baixo o LOD).",
+    "cta.texto": "Queres máis información técnica e detallada sobre este estudo?",
+    "cta.boton": "Consulta a análise avanzada →",
   },
   en: {
     "site.title": "Environmental Study of the Nogueiredo Stream",
@@ -293,5 +295,7 @@ const translations = {
     "analise.pcaRealTitulo": "Live-computed PCA",
     "analise.pcaRealIntro": "Real biplot, computed in the browser from water data (10 elements with complete data across all 27 samples: Ca, Fe, Co, Ni, Ga, As, Rb, Sr, Ba, U). Points are samples; arrows show each element's direction and importance.",
     "analise.pcaRealAviso": "⚠ Own calculation performed with JavaScript in the browser. May differ slightly from the original R analysis (Figure 6) due to methodological choices (elements included, handling of values below the LOD).",
+    "cta.texto": "Want more detailed technical information about this study?",
+    "cta.boton": "Explore the advanced analysis →",
   }
 };

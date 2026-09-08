@@ -21,7 +21,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     phMap = L.map('ph-map-container', { center: [42.284, -8.112], zoom: 13 });
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; OpenStreetMap contributors', subdomains: 'abc', maxZoom: 19
-}).addTo(mainMap);
+}).addTo(phMap);
     drawPhMarkers();
     renderMapLegend("ph-map-legend");
   }
