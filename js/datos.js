@@ -80,9 +80,9 @@ function renderMiniMap() {
   if (!container || miniMap) return;
 
   miniMap = L.map('datos-mini-map', { center: [42.284, -8.112], zoom: 13, scrollWheelZoom: false });
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; OpenStreetMap &copy; CARTO', subdomains: 'abcd', maxZoom: 19
-  }).addTo(miniMap);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; OpenStreetMap contributors', subdomains: 'abc', maxZoom: 19
+}).addTo(miniMap);
 
   samplePoints.forEach(p => {
     L.circleMarker([p.lat, p.lon], {

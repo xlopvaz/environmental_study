@@ -10,9 +10,9 @@ let phMarkers = [];
 function initMaps() {
   if (!mainMap) {
     mainMap = L.map('map-container', { center: [42.284, -8.112], zoom: 13 });
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-      attribution: '&copy; OpenStreetMap &copy; CARTO', subdomains: 'abcd', maxZoom: 19
-    }).addTo(mainMap);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; OpenStreetMap contributors', subdomains: 'abc', maxZoom: 19
+}).addTo(mainMap);
     drawMainMarkers();
     renderMapLegend("map-legend");
   }
