@@ -323,3 +323,12 @@
   min-width: 500px;
   height: auto;
 }
+
+.baf-high {
+  color: #a13a2c;
+  font-weight: 700;
+}
+
+.baf-low {
+  color: #2f5233;
+}

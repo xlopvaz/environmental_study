@@ -302,6 +302,7 @@ function setLanguage(lang) {
   }
   if (typeof renderMiniMap === "function") renderMiniMap();
   if (typeof renderPcaBiplot === "function") renderPcaBiplot();
+  if (typeof renderBafTable === "function") renderBafTable(document.getElementById("baf-element-select").value);
 }
 
 document.getElementById("btn-gl").addEventListener("click", () => setLanguage("gl"));

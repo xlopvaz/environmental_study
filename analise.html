@@ -63,6 +63,19 @@
       </div>
     </section>
 
+<section id="baf">
+      <h2 data-i18n="analise.bafTitulo">Factor de Bioacumulación (BAF)</h2>
+      <p data-i18n="analise.bafIntro">O BAF indica se un elemento se concentra máis nun organismo vivo que no sedimento que o rodea. BAF > 1 suxire bioacumulación; BAF < 1 suxire exclusión ou baixa transferencia.</p>
+      <p class="map-note" data-i18n="analise.bafFormula">BAF = concentración no organismo ÷ concentración no sedimento (ambas en mg/kg, mesmo punto de mostraxe).</p>
+
+      <label for="baf-element-select" class="comp-label" data-i18n="analise.bafSelectorLabel">Selecciona un elemento:</label>
+      <select id="baf-element-select" class="comp-select"></select>
+
+      <div class="data-table-wrapper">
+        <table class="data-table" id="baf-table"></table>
+      </div>
+    </section>
+
     <section id="correlacions">
       <h2 data-i18n="analise.corrTitulo">Matriz de correlacións de Spearman (augas)</h2>
       <p data-i18n="analise.corrIntro">Correlación entre pares de elementos nas 27 mostras de auga do regato de Nogueiredo e proximidades. Fai clic nunha cela para ver o detalle. A cor indica a forza e o sentido da correlación.</p>
@@ -141,5 +154,6 @@
   <script src="js/analise.js"></script>
   <script src="js/datos.js"></script>
   <script src="js/comparador.js"></script>
+  <script src="js/baf.js"></script>
 </body>
 </html>

@@ -149,6 +149,10 @@ const translations = {
     "analise.pcaRealAviso": "⚠ Cálculo propio realizado con JavaScript no navegador. Pode diferir lixeiramente da análise orixinal en R (Figura 6) por decisións metodolóxicas (elementos incluídos, tratamento doutros valores baixo o LOD).",
     "cta.texto": "Queres máis información técnica e detallada sobre este estudo?",
     "cta.boton": "Consulta a análise avanzada →",
+    "analise.bafTitulo": "Factor de Bioacumulación (BAF)",
+    "analise.bafIntro": "O BAF indica se un elemento se concentra máis nun organismo vivo que no sedimento que o rodea. BAF > 1 suxire bioacumulación; BAF < 1 suxire exclusión ou baixa transferencia.",
+    "analise.bafFormula": "BAF = concentración no organismo ÷ concentración no sedimento (ambas en mg/kg, mesmo punto de mostraxe).",
+    "analise.bafSelectorLabel": "Selecciona un elemento:",
   },
   en: {
     "site.title": "Environmental Study of the Nogueiredo Stream",
@@ -297,5 +301,9 @@ const translations = {
     "analise.pcaRealAviso": "⚠ Own calculation performed with JavaScript in the browser. May differ slightly from the original R analysis (Figure 6) due to methodological choices (elements included, handling of values below the LOD).",
     "cta.texto": "Want more detailed technical information about this study?",
     "cta.boton": "Explore the advanced analysis →",
+    "analise.bafTitulo": "Bioaccumulation Factor (BAF)",
+    "analise.bafIntro": "The BAF indicates whether an element concentrates more in a living organism than in the surrounding sediment. BAF > 1 suggests bioaccumulation; BAF < 1 suggests exclusion or low transfer.",
+    "analise.bafFormula": "BAF = concentration in organism ÷ concentration in sediment (both in mg/kg, same sampling point).",
+    "analise.bafSelectorLabel": "Select an element:",
   }
 };
