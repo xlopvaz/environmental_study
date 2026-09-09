@@ -153,6 +153,8 @@ const translations = {
     "analise.bafIntro": "O BAF indica se un elemento se concentra máis nun organismo vivo que no sedimento que o rodea. BAF > 1 suxire bioacumulación; BAF < 1 suxire exclusión ou baixa transferencia.",
     "analise.bafFormula": "BAF = concentración no organismo ÷ concentración no sedimento (ambas en mg/kg, mesmo punto de mostraxe).",
     "analise.bafSelectorLabel": "Selecciona un elemento:",
+    "analise.calidadeTitulo": "Calidade analítica do método",
+    "analise.calidadeIntro": "Distribución da desviación estándar relativa (RSD%) de todas as medidas realizadas (ambas campañas). Unha RSD baixa e concentrada preto de cero indica boa precisión instrumental.",
   },
   en: {
     "site.title": "Environmental Study of the Nogueiredo Stream",
@@ -305,5 +307,7 @@ const translations = {
     "analise.bafIntro": "The BAF indicates whether an element concentrates more in a living organism than in the surrounding sediment. BAF > 1 suggests bioaccumulation; BAF < 1 suggests exclusion or low transfer.",
     "analise.bafFormula": "BAF = concentration in organism ÷ concentration in sediment (both in mg/kg, same sampling point).",
     "analise.bafSelectorLabel": "Select an element:",
+    "analise.calidadeTitulo": "Analytical method quality",
+    "analise.calidadeIntro": "Distribution of relative standard deviation (RSD%) across all measurements (both campaigns). A low RSD concentrated near zero indicates good instrumental precision.",
   }
 };
