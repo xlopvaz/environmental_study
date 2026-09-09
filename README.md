@@ -73,7 +73,7 @@ Plain HTML, CSS and JavaScript (no frameworks), [Leaflet](https://leafletjs.com/
 **Xoel López Vázquez**
 Centro de Investigación Mariña (CIM), Universidade de Vigo
 Departamento de Química Analítica e Alimentaria — Grupo QA2
-Supervisor: Marta Costas Rodríguez
+Supervisor: **Marta Costas Rodríguez**
 
 ## Contact
 
