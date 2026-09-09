@@ -155,6 +155,13 @@ const translations = {
     "analise.bafSelectorLabel": "Selecciona un elemento:",
     "analise.calidadeTitulo": "Calidade analítica do método",
     "analise.calidadeIntro": "Distribución da desviación estándar relativa (RSD%) de todas as medidas realizadas (ambas campañas). Unha RSD baixa e concentrada preto de cero indica boa precisión instrumental.",
+    "analise.igeoTitulo": "Índice de Xeoacumulación (Igeo)",
+    "analise.igeoIntro": "O Igeo compara a concentración medida nun sedimento cun valor de fondo xeoquímico de referencia (\"average shale\", Turekian & Wedepohl, 1961), para clasificar o grao de contaminación. Só se inclúen os elementos con valor de fondo estandarizado nesta metodoloxía.",
+    "analise.igeoFormula": "Igeo = log₂(Cn / 1,5 × Bn), onde Cn = concentración medida e Bn = valor de fondo. Calculado sobre os sedimentos totais (S1-S5).",
+    "analise.igeoRef": "Valores de fondo (mg/kg): As=13, Pb=20, Zn=95, Cu=45, Ni=68, Co=19, Mn=850, Fe=47200, Cd=0,3 (Turekian & Wedepohl, 1961).",
+    "analise.igeoNotaTotal": "⚠ Estes valores tan elevados de Pb reflicten metal retido na estrutura mineral da rocha (liberado só coa dixestión ácida forte do laboratorio), non necesariamente unha ameaza directa para os organismos vivos. O Igeo mide contaminación total, non biodispoñibilidade — por iso tamén se calcula a continuación sobre a fracción biodispoñible.",
+    "analise.igeoBioTitulo": "Igeo sobre a fracción biodispoñible",
+    "analise.igeoBioIntro": "Mesmo cálculo, pero empregando o sedimento biodispoñible (extraído con HNO₃ diluído) en vez do sedimento total — unha aproximación máis realista ao que realmente poderían absorber os organismos.",
   },
   en: {
     "site.title": "Environmental Study of the Nogueiredo Stream",
@@ -309,5 +316,12 @@ const translations = {
     "analise.bafSelectorLabel": "Select an element:",
     "analise.calidadeTitulo": "Analytical method quality",
     "analise.calidadeIntro": "Distribution of relative standard deviation (RSD%) across all measurements (both campaigns). A low RSD concentrated near zero indicates good instrumental precision.",
+    "analise.igeoTitulo": "Geoaccumulation Index (Igeo)",
+    "analise.igeoIntro": "The Igeo compares the concentration measured in a sediment against a reference geochemical background value (\"average shale\", Turekian & Wedepohl, 1961), to classify the degree of contamination. Only elements with a standardized background value in this methodology are included.",
+    "analise.igeoFormula": "Igeo = log₂(Cn / 1.5 × Bn), where Cn = measured concentration and Bn = background value. Calculated on total sediments (S1-S5).",
+    "analise.igeoRef": "Background values (mg/kg): As=13, Pb=20, Zn=95, Cu=45, Ni=68, Co=19, Mn=850, Fe=47200, Cd=0.3 (Turekian & Wedepohl, 1961).",
+    "analise.igeoNotaTotal": "⚠ These very high Pb values reflect metal locked within the rock's mineral structure (released only through the lab's strong acid digestion), not necessarily a direct threat to living organisms. The Igeo measures total contamination, not bioavailability — which is why it is also calculated below using the bioavailable fraction.",
+    "analise.igeoBioTitulo": "Igeo on the bioavailable fraction",
+    "analise.igeoBioIntro": "Same calculation, but using bioavailable sediment (extracted with dilute HNO₃) instead of total sediment — a more realistic approximation of what organisms could actually absorb.",
   }
 };

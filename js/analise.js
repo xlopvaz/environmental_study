@@ -304,6 +304,10 @@ function setLanguage(lang) {
   if (typeof renderPcaBiplot === "function") renderPcaBiplot();
   if (typeof renderBafTable === "function") renderBafTable(document.getElementById("baf-element-select").value);
   if (typeof renderRsdHistogram === "function") renderRsdHistogram();
+  if (typeof renderIgeoTable === "function") renderIgeoTable();
+  if (typeof renderIgeoBioTable === "function") renderIgeoBioTable();
+  if (typeof renderIgeoTable === "function") renderIgeoTable();
+if (typeof renderIgeoBioTable === "function") renderIgeoBioTable();
 }
 
 document.getElementById("btn-gl").addEventListener("click", () => setLanguage("gl"));

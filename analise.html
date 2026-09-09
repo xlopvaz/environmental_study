@@ -120,6 +120,28 @@
       <p class="map-note" data-i18n="analise.corrNota">ρ = coeficiente de correlación de Spearman. |ρ| > 0,7 indica unha correlación forte; entre 0,4 e 0,7, moderada; por debaixo de 0,4, débil. N = 27 mostras.</p>
     </section>
 
+<section id="igeo">
+      <h2 data-i18n="analise.igeoTitulo">Índice de Xeoacumulación (Igeo)</h2>
+      <p data-i18n="analise.igeoIntro">O Igeo compara a concentración medida nun sedimento cun valor de fondo xeoquímico de referencia ("average shale", Turekian &amp; Wedepohl, 1961), para clasificar o grao de contaminación. Só se inclúen os elementos con valor de fondo estandarizado nesta metodoloxía.</p>
+      <p class="map-note" data-i18n="analise.igeoFormula">Igeo = log₂(Cn / 1,5 × Bn), onde Cn = concentración medida e Bn = valor de fondo. Calculado sobre os sedimentos totais (S1-S5).</p>
+
+      <div class="igeo-legend" id="igeo-legend"></div>
+
+      <div class="data-table-wrapper">
+        <table class="data-table" id="igeo-table"></table>
+      </div>
+    <div class="igeo-note-box">
+  <p data-i18n="analise.igeoNotaTotal">⚠ Estes valores tan elevados de Pb reflicten metal retido na estrutura mineral da rocha (liberado só coa dixestión ácida forte do laboratorio), non necesariamente unha ameaza directa para os organismos vivos. O Igeo mide contaminación total, non biodispoñibilidade — por iso tamén se calcula a continuación sobre a fracción biodispoñible.</p>
+</div>
+
+<h3 data-i18n="analise.igeoBioTitulo">Igeo sobre a fracción biodispoñible</h3>
+<p data-i18n="analise.igeoBioIntro">Mesmo cálculo, pero empregando o sedimento biodispoñible (extraído con HNO₃ diluído) en vez do sedimento total — unha aproximación máis realista ao que realmente poderían absorber os organismos.</p>
+
+<div class="data-table-wrapper">
+  <table class="data-table" id="igeo-bio-table"></table>
+</div>
+      <p class="map-note" data-i18n="analise.igeoRef">Valores de fondo (mg/kg): As=13, Pb=20, Zn=95, Cu=45, Ni=68, Co=19, Mn=850, Fe=47200, Cd=0,3 (Turekian &amp; Wedepohl, 1961).</p>
+    </section>
 
     <section id="pca">
       <h2 data-i18n="analise.pcaTitulo">Análise de Compoñentes Principais (PCA)</h2>
@@ -168,5 +190,6 @@
   <script src="js/comparador.js"></script>
   <script src="js/baf.js"></script>
   <script src="js/calidade.js"></script>
+  <script src="js/igeo.js"></script>
 </body>
 </html>

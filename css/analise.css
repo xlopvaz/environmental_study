@@ -332,3 +332,12 @@
 .baf-low {
   color: #2f5233;
 }
+
+.igeo-note-box {
+  margin: 1.2rem 0;
+  padding: 1rem 1.2rem;
+  background: #fdf6ec;
+  border-left: 3px solid #c0793b;
+  font-size: 0.85rem;
+  color: #6b4a1f;
+}
