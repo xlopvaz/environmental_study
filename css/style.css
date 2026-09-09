@@ -9,6 +9,11 @@
   --fuente-texto: "Segoe UI", Arial, sans-serif;
 }
 
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
 * {
   margin: 0;
   padding: 0;
