@@ -970,3 +970,141 @@ section h3 {
 .cta-button:hover {
   background: var(--color-primario);
 }
+
+/* ============================================
+   MODO ESCURO
+   ============================================ */
+
+[data-theme="dark"] {
+  --color-fondo: #1a1d21;
+  --color-texto: #e4e2dd;
+  --color-primario: #6fa3c9;
+  --color-secundario: #7fb894;
+  --color-borde: #3a3d42;
+}
+
+[data-theme="dark"] body {
+  background-color: #14161a;
+}
+
+[data-theme="dark"] header,
+[data-theme="dark"] .analise-header {
+  background-color: #0f2233;
+}
+
+[data-theme="dark"] nav,
+[data-theme="dark"] .live-banner {
+  background-color: #1e2126;
+  border-color: var(--color-borde);
+}
+
+[data-theme="dark"] nav a {
+  color: var(--color-primario);
+}
+
+[data-theme="dark"] main,
+[data-theme="dark"] .analise-main {
+  background-color: #14161a;
+}
+
+[data-theme="dark"] section {
+  border-color: var(--color-borde);
+}
+
+[data-theme="dark"] .stat-box,
+[data-theme="dark"] .element-detail,
+[data-theme="dark"] .glossary-item,
+[data-theme="dark"] .corr-detail,
+[data-theme="dark"] .pca-detail,
+[data-theme="dark"] .live-card,
+[data-theme="dark"] .faq-answer p,
+[data-theme="dark"] .data-table-wrapper,
+[data-theme="dark"] .comp-detail-table-wrapper,
+[data-theme="dark"] .ph-model,
+[data-theme="dark"] .timeline-content,
+[data-theme="dark"] .cta-banner,
+[data-theme="dark"] .igeo-note-box,
+[data-theme="dark"] .rede-svg-wrapper,
+[data-theme="dark"] .pca-biplot-container,
+[data-theme="dark"] .perfil-checkboxes {
+  background-color: #20242a;
+  border-color: var(--color-borde);
+}
+
+[data-theme="dark"] .data-table th {
+  background-color: #0f2233;
+}
+
+[data-theme="dark"] .data-table td {
+  border-color: var(--color-borde);
+  color: var(--color-texto);
+}
+
+[data-theme="dark"] .data-id-cell {
+  background-color: #262a31;
+}
+
+[data-theme="dark"] .empty-cell {
+  color: #555;
+}
+
+[data-theme="dark"] .glossary-search,
+[data-theme="dark"] .comp-select,
+[data-theme="dark"] .glossary-def {
+  background-color: #20242a;
+  border-color: var(--color-borde);
+  color: var(--color-texto);
+}
+
+[data-theme="dark"] .glossary-search::placeholder {
+  color: #888;
+}
+
+[data-theme="dark"] .health-box {
+  background: #2a2318;
+}
+
+[data-theme="dark"] .data-warning {
+  background: #2a2318;
+}
+
+[data-theme="dark"] .scenario-btn,
+[data-theme="dark"] .faq-question {
+  background-color: #20242a;
+  border-color: var(--color-borde);
+  color: var(--color-texto);
+}
+
+[data-theme="dark"] .scenario-btn.active {
+  background-color: #262f3a;
+}
+
+[data-theme="dark"] .element-cell {
+  background: #2a2d33;
+  color: #555;
+}
+
+[data-theme="dark"] .element-detail-body p,
+[data-theme="dark"] .glossary-def,
+[data-theme="dark"] .timeline-content p,
+[data-theme="dark"] .faq-answer p {
+  color: #c8c5be;
+}
+
+[data-theme="dark"] .cta-button {
+  color: white;
+}
+
+[data-theme="dark"] footer {
+  color: #888;
+}
+
+#theme-toggle {
+  background: none;
+  border: 1px solid rgba(255,255,255,0.4);
+  color: white;
+  border-radius: 4px;
+  padding: 0.2rem 0.5rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+}

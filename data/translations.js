@@ -165,6 +165,10 @@ const translations = {
     "analise.redeTitulo": "Rede de correlacións",
     "analise.redeIntro": "Os mesmos datos da matriz de correlacións, representados como unha rede: cada liña conecta dous elementos cunha correlación forte. Azul = correlación positiva; vermello = negativa. Canto máis grosa a liña, máis forte a correlación.",
     "analise.redeUmbralLabel": "Umbral mínimo (|ρ|):",
+    "analise.kwTitulo": "Test de Kruskal-Wallis interactivo",
+    "analise.kwIntro": "Comproba se hai diferenzas estatisticamente significativas na concentración dun elemento entre as matrices ambientais (auga, sedimento, follas, madeira, miñocas).",
+    "analise.kwAviso": "⚠ Algúns grupos teñen poucas mostras (n=2-5), típico da segunda campaña. Interpreta os resultados con cautela cando o tamaño mostral sexa moi pequeno.",
+    "analise.kwSelectorLabel": "Selecciona un elemento:",
   },
   en: {
     "site.title": "Environmental Study of the Nogueiredo Stream",
@@ -329,5 +333,9 @@ const translations = {
     "analise.redeTitulo": "Correlation network",
     "analise.redeIntro": "The same correlation matrix data, shown as a network: each line connects two elements with a strong correlation. Blue = positive correlation; red = negative. The thicker the line, the stronger the correlation.",
     "analise.redeUmbralLabel": "Minimum threshold (|ρ|):",
+    "analise.kwTitulo": "Interactive Kruskal-Wallis test",
+    "analise.kwIntro": "Check whether there are statistically significant differences in an element's concentration across environmental matrices (water, sediment, leaves, wood, earthworms).",
+    "analise.kwAviso": "⚠ Some groups have few samples (n=2-5), typical of the second campaign. Interpret results with caution when sample size is very small.",
+    "analise.kwSelectorLabel": "Select an element:",
   }
 };
