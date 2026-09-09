@@ -355,7 +355,7 @@ section h3 {
 }
 
 .resource-list a {
-  color: var(--color-secundario);
+  color: var(--color-primario);
   text-decoration: none;
   font-weight: 600;
 }
