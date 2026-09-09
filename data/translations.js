@@ -162,6 +162,9 @@ const translations = {
     "analise.igeoNotaTotal": "⚠ Estes valores tan elevados de Pb reflicten metal retido na estrutura mineral da rocha (liberado só coa dixestión ácida forte do laboratorio), non necesariamente unha ameaza directa para os organismos vivos. O Igeo mide contaminación total, non biodispoñibilidade — por iso tamén se calcula a continuación sobre a fracción biodispoñible.",
     "analise.igeoBioTitulo": "Igeo sobre a fracción biodispoñible",
     "analise.igeoBioIntro": "Mesmo cálculo, pero empregando o sedimento biodispoñible (extraído con HNO₃ diluído) en vez do sedimento total — unha aproximación máis realista ao que realmente poderían absorber os organismos.",
+    "analise.redeTitulo": "Rede de correlacións",
+    "analise.redeIntro": "Os mesmos datos da matriz de correlacións, representados como unha rede: cada liña conecta dous elementos cunha correlación forte. Azul = correlación positiva; vermello = negativa. Canto máis grosa a liña, máis forte a correlación.",
+    "analise.redeUmbralLabel": "Umbral mínimo (|ρ|):",
   },
   en: {
     "site.title": "Environmental Study of the Nogueiredo Stream",
@@ -323,5 +326,8 @@ const translations = {
     "analise.igeoNotaTotal": "⚠ These very high Pb values reflect metal locked within the rock's mineral structure (released only through the lab's strong acid digestion), not necessarily a direct threat to living organisms. The Igeo measures total contamination, not bioavailability — which is why it is also calculated below using the bioavailable fraction.",
     "analise.igeoBioTitulo": "Igeo on the bioavailable fraction",
     "analise.igeoBioIntro": "Same calculation, but using bioavailable sediment (extracted with dilute HNO₃) instead of total sediment — a more realistic approximation of what organisms could actually absorb.",
+    "analise.redeTitulo": "Correlation network",
+    "analise.redeIntro": "The same correlation matrix data, shown as a network: each line connects two elements with a strong correlation. Blue = positive correlation; red = negative. The thicker the line, the stronger the correlation.",
+    "analise.redeUmbralLabel": "Minimum threshold (|ρ|):",
   }
 };

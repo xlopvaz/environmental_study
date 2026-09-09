@@ -341,3 +341,29 @@
   font-size: 0.85rem;
   color: #6b4a1f;
 }
+
+.rede-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin: 1.2rem 0;
+  font-size: 0.85rem;
+}
+
+.rede-controls input[type="range"] {
+  flex: 1;
+  max-width: 300px;
+}
+
+.rede-svg-wrapper {
+  border: 1px solid var(--color-borde);
+  background: white;
+  display: flex;
+  justify-content: center;
+}
+
+.rede-svg {
+  width: 100%;
+  max-width: 550px;
+  height: auto;
+}

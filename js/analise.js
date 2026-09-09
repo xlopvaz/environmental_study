@@ -307,7 +307,8 @@ function setLanguage(lang) {
   if (typeof renderIgeoTable === "function") renderIgeoTable();
   if (typeof renderIgeoBioTable === "function") renderIgeoBioTable();
   if (typeof renderIgeoTable === "function") renderIgeoTable();
-if (typeof renderIgeoBioTable === "function") renderIgeoBioTable();
+  if (typeof renderIgeoBioTable === "function") renderIgeoBioTable();
+  if (typeof renderRedeGraph === "function") renderRedeGraph();
 }
 
 document.getElementById("btn-gl").addEventListener("click", () => setLanguage("gl"));

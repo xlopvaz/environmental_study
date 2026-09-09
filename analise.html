@@ -143,6 +143,19 @@
       <p class="map-note" data-i18n="analise.igeoRef">Valores de fondo (mg/kg): As=13, Pb=20, Zn=95, Cu=45, Ni=68, Co=19, Mn=850, Fe=47200, Cd=0,3 (Turekian &amp; Wedepohl, 1961).</p>
     </section>
 
+<section id="rede">
+      <h2 data-i18n="analise.redeTitulo">Rede de correlacións</h2>
+      <p data-i18n="analise.redeIntro">Os mesmos datos da matriz de correlacións, representados como unha rede: cada liña conecta dous elementos cunha correlación forte. Azul = correlación positiva; vermello = negativa. Canto máis grosa a liña, máis forte a correlación.</p>
+
+      <div class="rede-controls">
+        <label for="rede-threshold" data-i18n="analise.redeUmbralLabel">Umbral mínimo (|ρ|):</label>
+        <input type="range" id="rede-threshold" min="0.3" max="0.9" step="0.05" value="0.6">
+        <span id="rede-threshold-value">0,60</span>
+      </div>
+
+      <div class="rede-svg-wrapper" id="rede-svg-wrapper"></div>
+    </section>
+
     <section id="pca">
       <h2 data-i18n="analise.pcaTitulo">Análise de Compoñentes Principais (PCA)</h2>
       <p data-i18n="analise.pcaIntro">Representación esquemática dos catro cuadrantes identificados na PCA das augas do regato (25 mostras). PC1 explica un 54,4% da variabilidade e PC2 un 18,7% (73,1% acumulado).</p>
@@ -182,6 +195,7 @@
 
   <script src="data/translations.js"></script>
   <script src="data/correlations.js"></script>
+  <script src="js/rede.js"></script>
   <script src="data/sample-points.js"></script>
   <script src="data/sr-isotopes.js"></script>
   <script src="data/full-results.js"></script>
