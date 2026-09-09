@@ -1108,3 +1108,16 @@ section h3 {
   cursor: pointer;
   font-size: 0.9rem;
 }
+
+.contact-list a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.contact-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  color: var(--color-secundario);
+}
