@@ -169,6 +169,9 @@ const translations = {
     "analise.kwIntro": "Comproba se hai diferenzas estatisticamente significativas na concentración dun elemento entre as matrices ambientais (auga, sedimento, follas, madeira, miñocas).",
     "analise.kwAviso": "⚠ Algúns grupos teñen poucas mostras (n=2-5), típico da segunda campaña. Interpreta os resultados con cautela cando o tamaño mostral sexa moi pequeno.",
     "analise.kwSelectorLabel": "Selecciona un elemento:",
+        "nav.resumoResultados": "Resumo de resultados",
+    "resumo.titulo": "Resumo completo de resultados",
+    "resumo.intro": "Despregue cada apartado para ver o detalle estatístico completo de cada aspecto do estudo.",
   },
   en: {
     "site.title": "Environmental Study of the Nogueiredo Stream",
@@ -337,5 +340,8 @@ const translations = {
     "analise.kwIntro": "Check whether there are statistically significant differences in an element's concentration across environmental matrices (water, sediment, leaves, wood, earthworms).",
     "analise.kwAviso": "⚠ Some groups have few samples (n=2-5), typical of the second campaign. Interpret results with caution when sample size is very small.",
     "analise.kwSelectorLabel": "Select an element:",
+        "nav.resumoResultados": "Results summary",
+    "resumo.titulo": "Complete results summary",
+    "resumo.intro": "Expand each section to see the full statistical detail of each aspect of the study.",
   }
 };

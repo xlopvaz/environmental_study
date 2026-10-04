@@ -22,6 +22,7 @@ if (typeof renderLiveBanner === "function") renderLiveBanner();
 if (typeof renderIcpmsDiagram === "function") renderIcpmsDiagram();
 if (typeof renderIcpmsDiagram === "function") renderIcpmsDiagram();
 if (typeof renderFaq === "function") renderFaq();
+if (typeof renderResumoResultados === "function") renderResumoResultados();
 }
 
 document.getElementById("btn-gl").addEventListener("click", () => setLanguage("gl"));
