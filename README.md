@@ -81,7 +81,3 @@ Centro de Investigación Mariña (CIM), Universidade de Vigo · Departamento de 
 
 📧 [xoel.lopez.vazquez@rai.usc.es](mailto:xoel.lopez.vazquez@rai.usc.es)
 💼 [LinkedIn](https://www.linkedin.com/in/xoellopezvazquez)
-
-## License
-
-_[To be decided]_
