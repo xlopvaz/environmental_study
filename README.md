@@ -20,15 +20,15 @@ The Nogueiredo stream supplies drinking water to around 200 people in Castrelo d
 - 🧪 Interactive periodic table of the 23 analyzed elements, with chemical data, concentration ranges, legal limits and health effects
 - 🗺️ Interactive maps with rainfall scenarios (wet/normal/dry), clearly distinguishing real ICP-MS-TOF measurements from model estimates
 - 📈 Advanced predictive model combining rainfall and pH (based on Smedley & Kinniburgh, 2002)
-- ⛅ Real-time estimate of expected As levels based on current weather and a 10-year climate normal (Open-Meteo API)
-- 🕰️ Contamination timeline, searchable glossary, and FAQ section
+- ⛅ Real-time estimate of expected As levels: compares the last 120 days of rainfall with the 10-year average for the same dates (ERA5, Open-Meteo). Provisional calibration with two sampling campaigns
+- 🕰️ Contamination timeline, searchable glossary, FAQ, and an expandable full results summary
 
 ### Advanced analysis page
 - 📊 Full ICP-MS-TOF results tables for both sampling campaigns
 - 🔥 Interactive Spearman correlation matrix and network graph
 - 📉 Multi-element longitudinal profile and matrix comparator (water/sediment/leaves/wood/earthworms)
 - 🧮 Bioaccumulation Factor (BAF) and Geoaccumulation Index (Igeo) calculators, computed live from the raw data
-- 🔬 In-browser PCA (principal component analysis)
+- 📈 Analytical quality (RSD distribution) and a schematic PCA quadrant diagram
 
 ## Repository structure
 
@@ -45,13 +45,14 @@ The Nogueiredo stream supplies drinking water to around 200 people in Castrelo d
 │   ├── map.js                      # Interactive maps and pH model
 │   ├── live-estimate.js            # Real-time estimate
 │   ├── glossary.js / faq.js        # Glossary and FAQ rendering
+│   ├── resumo-resultados.js        # Expandable results summary
 │   ├── icpms-diagram.js            # ICP-MS-TOF process diagram
 │   ├── analise.js                  # Correlation matrix, profiles, PCA schematic
 │   ├── datos.js                    # Full results tables + mini map
 │   ├── comparador.js               # Matrix comparator
 │   ├── baf.js / igeo.js            # BAF and Igeo calculators
-│   ├── rede.js                     # Correlation network graph
-│   └── pca-real.js                 # In-browser PCA computation
+│   ├── calidade.js                 # Analytical quality (RSD histogram)
+│   └── rede.js                     # Correlation network graph
 ├── data/
 │   ├── translations.js             # Galician and English text
 │   ├── periodic-positions.js       # Full periodic table layout
@@ -60,22 +61,27 @@ The Nogueiredo stream supplies drinking water to around 200 people in Castrelo d
 │   ├── sr-isotopes.js              # 87Sr/86Sr isotope data
 │   ├── correlations.js             # Spearman correlation matrix
 │   ├── full-results.js             # Full ICP-MS-TOF results (both campaigns)
+│   ├── resultados-resumo.js        # Content of the expandable results summary
 │   └── glossary.js / faq.js        # Glossary terms and FAQ content
 └── assets/                         # Images and resources
 ```
 
 ## Built with
 
-Plain HTML, CSS and JavaScript (no frameworks), [Leaflet](https://leafletjs.com/) for the interactive maps, [Chart.js](https://www.chartjs.org/) for charts, and the [Open-Meteo API](https://open-meteo.com/) for real-time weather data. Statistical methods (PCA, Kruskal-Wallis) are computed natively in JavaScript, without external statistical libraries.
+Plain HTML, CSS and JavaScript (no frameworks), [Leaflet](https://leafletjs.com/) for the interactive maps, [Chart.js](https://www.chartjs.org/) for charts, and the [Open-Meteo API](https://open-meteo.com/) for weather data. BAF, Igeo and the other indices are computed natively in JavaScript from the raw data, without external statistical libraries.
 
 ## Authorship
 
-**Xoel López Vázquez**
-Centro de Investigación Mariña (CIM), Universidade de Vigo
-Departamento de Química Analítica e Alimentaria — Grupo QA2
-Supervisor: **Marta Costas Rodríguez**
+- **Xoel López Vázquez**
+- **Marta Costas Rodríguez**
+
+Centro de Investigación Mariña (CIM), Universidade de Vigo · Departamento de Química Analítica e Alimentaria · Grupo QA2
 
 ## Contact
 
 📧 [xoel.lopez.vazquez@rai.usc.es](mailto:xoel.lopez.vazquez@rai.usc.es)
 💼 [LinkedIn](https://www.linkedin.com/in/xoellopezvazquez)
+
+## License
+
+_[To be decided]_

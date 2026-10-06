@@ -51,8 +51,8 @@ const translations = {
 
     "sobre.titulo": "Sobre o proxecto",
     "sobre.autoria": "Autoría",
-    "sobre.autoriaTexto": "Este estudo foi realizado por Xoel López Vázquez no Centro de Investigación Mariña (CIM), Universidade de Vigo, Departamento de Química Analítica e Alimentaria, Grupo QA2, baixo a titorización de Marta Costas Rodríguez.",    
-    "sobre.recursos": "Recursos",
+    "sobre.autoriaTexto": "Este estudo foi realizado por Xoel López Vázquez e Marta Costas Rodríguez no Centro de Investigación Mariña (CIM), Universidade de Vigo, Departamento de Química Analítica e Alimentaria, Grupo QA2.",
+     "sobre.recursos": "Recursos",
     "sobre.memoria": "Memoria completa do TFG (PDF)",
     "sobre.repo": "Código fonte no repositorio de GitHub",
     "sobre.recursos": "Recursos",
@@ -223,8 +223,8 @@ const translations = {
 
     "sobre.titulo": "About the project",
     "sobre.autoria": "Authorship",
-    "sobre.autoriaTexto": "This study was carried out by Xoel López Vázquez at the Centro de Investigación Mariña (CIM), University of Vigo, Department of Analytical and Food Chemistry, QA2 Research Group, supervised by Marta Costas Rodríguez.",
-    "sobre.recursos": "Resources",
+    "sobre.autoriaTexto": "This study was carried out by Xoel López Vázquez and Marta Costas Rodríguez at the Centro de Investigación Mariña (CIM), University of Vigo, Department of Analytical and Food Chemistry, QA2 Research Group.",
+     "sobre.recursos": "Resources",
     "sobre.memoria": "Full thesis report (PDF)",
     "sobre.repo": "Source code on GitHub",
     "sobre.recursos": "Resources",
