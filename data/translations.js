@@ -172,6 +172,7 @@ const translations = {
         "nav.resumoResultados": "Resumo de resultados",
     "resumo.titulo": "Resumo completo de resultados",
     "resumo.intro": "Despregue cada apartado para ver o detalle estatístico completo de cada aspecto do estudo.",
+        "resultados.liveNota": "Indicative estimate: compares rainfall over the last 120 days with the 10-year average for the same dates (ERA5, Open-Meteo) and applies a dilution factor calibrated with only two campaigns (March and September 2026). Assumed pH: 6.75. It does not replace an actual measurement.",
   },
   en: {
     "site.title": "Environmental Study of the Nogueiredo Stream",
@@ -343,5 +344,6 @@ const translations = {
         "nav.resumoResultados": "Results summary",
     "resumo.titulo": "Complete results summary",
     "resumo.intro": "Expand each section to see the full statistical detail of each aspect of the study.",
+        "resultados.liveNota": "Estimación orientativa: compara a choiva dos últimos 120 días coa media de 10 anos para as mesmas datas (ERA5, Open-Meteo) e aplica un factor de dilución calibrado con só dúas campañas (marzo e setembro de 2026). pH asumido: 6,75. Non substitúe unha medida real.",
   }
 };
