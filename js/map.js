@@ -1,54 +1,27 @@
-// ===== Mapa 1: escenarios pluviométricos simples (wet/normal/dry) =====
-let mainMap = null;
+// ===== Mapa interactivo do As segundo a choiva (modelo da memoria) =====
+// Factor de dilución = 150 / % de choiva acumulada (4 meses) respecto á referencia 1991-2020.
+// Marzo de 2026 = 150 % => factor 1 => son os valores realmente medidos (ICP-MS-TOF).
+// Calquera outro % é unha estimación do modelo.
+
+let mainMap = null;       // nomes mantidos porque main.js chama a drawMainMarkers() ao cambiar de idioma
 let mainMarkers = [];
-let currentScenario = "wet";
 
-// ===== Mapa 2: modelo avanzado precipitación + pH =====
-let phMap = null;
-let phMarkers = [];
+const PRECIP_REFERENCE_PCT = 150;
+const SCENARIO_PCT = { wet: 150, normal: 100, dry: 50 };
+const STREAM_POINTS = 22; // m1-m22; m23-m24 = mestura co Miño, m25 = zona termal
 
-function initMaps() {
-  if (!mainMap) {
-    mainMap = L.map('map-container', { center: [42.284, -8.112], zoom: 13 });
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '&copy; OpenStreetMap contributors', subdomains: 'abc', maxZoom: 19
-}).addTo(mainMap);
-    drawMainMarkers();
-    renderMapLegend("map-legend");
-  }
+function mapLang() { return currentLang === "gl" ? "gl" : "en"; }
+function fmtComma(n, decimals = 1) { return n.toFixed(decimals).replace(".", ","); }
 
-  if (!phMap) {
-    phMap = L.map('ph-map-container', { center: [42.284, -8.112], zoom: 13 });
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '&copy; OpenStreetMap contributors', subdomains: 'abc', maxZoom: 19
-}).addTo(phMap);
-    drawPhMarkers();
-    renderMapLegend("ph-map-legend");
-  }
+function currentPct() {
+  const el = document.getElementById("precip-slider");
+  return el ? parseInt(el.value, 10) : PRECIP_REFERENCE_PCT;
 }
 
-// ===== Factor de pH (adsorción de As sobre óxidos de Fe) =====
-// Basado en Smedley & Kinniburgh (2002), Appl. Geochem. 17, 517-568
-function getPhFactor(ph) {
-  if (ph < 5.5) return 0.55;
-  if (ph < 6.0) return 0.75;
-  if (ph < 6.5) return 0.90;
-  if (ph < 7.0) return 1.00;
-  if (ph < 7.5) return 1.25;
-  if (ph < 8.0) return 1.65;
-  if (ph < 8.5) return 2.20;
-  return 3.00;
-}
+function factorForPct(pct) { return PRECIP_REFERENCE_PCT / pct; }
 
-function getPhDescKey(ph) {
-  if (ph < 5.5) return "phVeryAcid";
-  if (ph < 6.0) return "phAcid";
-  if (ph < 6.5) return "phSlightlyAcid";
-  if (ph < 7.0) return "phReference";
-  if (ph < 7.5) return "phNeutralBasic";
-  if (ph < 8.0) return "phBasic";
-  if (ph < 8.5) return "phVeryBasic";
-  return "phExtremeBasic";
+function valueForPoint(point, pct) {
+  return Math.round(point.as * factorForPct(pct) * 10) / 10;
 }
 
 function colorForValue(value) {
@@ -59,116 +32,27 @@ function colorForValue(value) {
 }
 
 function popupHtml(point, value, isReal) {
-  const lang = currentLang === "gl" ? "gl" : "en";
   const tagLabels = {
     gl: { real: "Dato real (ICP-MS-TOF)", model: "Estimación (modelo)", limit: "Límite legal: 10 µg/L" },
     en: { real: "Real data (ICP-MS-TOF)", model: "Estimate (model)", limit: "Legal limit: 10 µg/L" }
   };
-  const t = tagLabels[lang];
+  const t = tagLabels[mapLang()];
   return `
     <strong>${point.id.toUpperCase()}</strong><br>
     As: <strong>${value} µg/L</strong><br>
-    <span style="font-size:0.7rem;color:${isReal ? '#4a7c59' : '#c0793b'};font-weight:600;">${isReal ? t.real : t.model}</span><br>
+    <span style="font-size:0.7rem;color:${isReal ? "#4a7c59" : "#c0793b"};font-weight:600;">${isReal ? t.real : t.model}</span><br>
     <span style="font-size:0.72rem;color:#777;">${t.limit}</span>
   `;
 }
 
-// ----- Mapa 1: escenarios -----
-function drawMainMarkers() {
-  mainMarkers.forEach(m => mainMap.removeLayer(m));
-  mainMarkers = [];
-
-  samplePoints.forEach(p => {
-    const value = Math.round(p.as * scenarioFactors[currentScenario].factor * 10) / 10;
-    const marker = L.circleMarker([p.lat, p.lon], {
-      radius: 7, fillColor: colorForValue(value), color: "#fff", weight: 1.5, fillOpacity: 0.9
-    }).addTo(mainMap);
-    marker.bindPopup(popupHtml(p, value, currentScenario === "wet"));
-    mainMarkers.push(marker);
-  });
-}
-
-function setScenario(scenario) {
-  currentScenario = scenario;
-  document.querySelectorAll(".scenario-btn").forEach(btn => {
-    btn.classList.toggle("active", btn.dataset.scenario === scenario);
-  });
-  drawMainMarkers();
-}
-
-document.querySelectorAll(".scenario-btn").forEach(btn => {
-  btn.addEventListener("click", () => setScenario(btn.dataset.scenario));
-});
-
-// ----- Mapa 2: modelo pH + precipitación -----
-function drawPhMarkers() {
-  phMarkers.forEach(m => phMap.removeLayer(m));
-  phMarkers = [];
-
-  const pct = parseInt(document.getElementById("precip-slider").value);
-  const ph = parseInt(document.getElementById("ph-slider").value) / 10;
-  const precipFactor = 150 / pct;
-  const phFactor = getPhFactor(ph);
-
-  samplePoints.forEach(p => {
-    const value = Math.round(p.as * precipFactor * phFactor * 10) / 10;
-    const marker = L.circleMarker([p.lat, p.lon], {
-      radius: 7, fillColor: colorForValue(value), color: "#fff", weight: 1.5, fillOpacity: 0.9
-    }).addTo(phMap);
-    marker.bindPopup(popupHtml(p, value, false));
-    phMarkers.push(marker);
-  });
-
-  updatePhStats(precipFactor, phFactor, ph);
-}
-
-function updatePhStats(precipFactor, phFactor, ph) {
-  const lang = currentLang === "gl" ? "gl" : "en";
-  const values = samplePoints.map(p => Math.round(p.as * precipFactor * phFactor * 10) / 10);
-  const min = Math.min(...values);
-  const max = Math.max(...values);
-  const over = values.filter(v => v > 10).length;
-  const totalFactor = precipFactor * phFactor;
-
-  const phDescs = {
-    gl: {
-      phVeryAcid: "pH moi ácido — adsorción máxima do As sobre óxidos de Fe (favorece niveis baixos).",
-      phAcid: "pH ácido — adsorción alta do As.",
-      phSlightlyAcid: "pH lixeiramente ácido — adsorción boa.",
-      phReference: "Rango de referencia do regato — adsorción normal.",
-      phNeutralBasic: "pH neutro-básico — a adsorción diminúe, o As mobilízase máis.",
-      phBasic: "pH básico — adsorción baixa, maior mobilidade do As.",
-      phVeryBasic: "pH moi básico — adsorción moi baixa.",
-      phExtremeBasic: "pH extremadamente básico — o As queda case totalmente libre en disolución."
-    },
-    en: {
-      phVeryAcid: "Very acidic pH — maximum As adsorption onto Fe oxides (favours low levels).",
-      phAcid: "Acidic pH — high As adsorption.",
-      phSlightlyAcid: "Slightly acidic pH — good adsorption.",
-      phReference: "Stream's reference range — normal adsorption.",
-      phNeutralBasic: "Neutral-basic pH — adsorption decreases, As becomes more mobile.",
-      phBasic: "Basic pH — low adsorption, higher As mobility.",
-      phVeryBasic: "Very basic pH — very low adsorption.",
-      phExtremeBasic: "Extremely basic pH — As remains almost entirely free in solution."
-    }
-  };
-
-  document.getElementById("total-factor").textContent = "×" + totalFactor.toFixed(2);
-  document.getElementById("points-over").textContent = `${over} / ${samplePoints.length}`;
-  document.getElementById("estimated-range").textContent =
-    `${min.toFixed(1).replace(".", ",")} – ${max.toFixed(1).replace(".", ",")} µg/L`;
-  document.getElementById("ph-desc-text").textContent = phDescs[lang][getPhDescKey(ph)];
-}
-
-function renderMapLegend(elementId) {
-  const lang = currentLang === "gl" ? "gl" : "en";
+function renderMapLegend() {
+  const el = document.getElementById("map-legend");
+  if (!el) return;
   const labels = {
     gl: { ok: "≤ 10 µg/L (dentro do límite)", mid: "10-20 µg/L", high: "20-35 µg/L", veryHigh: "> 35 µg/L" },
     en: { ok: "≤ 10 µg/L (within limit)", mid: "10-20 µg/L", high: "20-35 µg/L", veryHigh: "> 35 µg/L" }
   };
-  const l = labels[lang];
-  const el = document.getElementById(elementId);
-  if (!el) return;
+  const l = labels[mapLang()];
   el.innerHTML = `
     <div class="legend-item"><span class="legend-swatch" style="background:#4a7c59"></span>${l.ok}</div>
     <div class="legend-item"><span class="legend-swatch" style="background:#c8a84b"></span>${l.mid}</div>
@@ -177,28 +61,97 @@ function renderMapLegend(elementId) {
   `;
 }
 
-function handleSliderChange() {
-  const pct = document.getElementById("precip-slider").value;
-  const ph = (parseInt(document.getElementById("ph-slider").value) / 10).toFixed(1).replace(".", ",");
-  document.getElementById("precip-value").textContent = pct + "%";
-  document.getElementById("ph-value").textContent = ph;
-  drawPhMarkers();
+// Media ± desviación típica mostral dos puntos do regato (m1-m22), escalada polo factor
+function streamStats(pct) {
+  const vals = samplePoints.slice(0, STREAM_POINTS).map(p => p.as);
+  const mean = vals.reduce((a, b) => a + b, 0) / vals.length;
+  const sd = Math.sqrt(vals.reduce((a, b) => a + (b - mean) ** 2, 0) / (vals.length - 1));
+  const f = factorForPct(pct);
+  return { mean: mean * f, sd: sd * f };
 }
 
-const precipSliderEl = document.getElementById("precip-slider");
-const phSliderEl = document.getElementById("ph-slider");
-if (precipSliderEl) precipSliderEl.addEventListener("input", handleSliderChange);
-if (phSliderEl) phSliderEl.addEventListener("input", handleSliderChange);
+// Actualiza barra, tarxetas, etiqueta de dato real/modelo, botóns e lenda (non precisa que o mapa exista)
+function updateMapUi() {
+  const pct = currentPct();
+  const lang = mapLang();
+  const setText = (id, text) => { const el = document.getElementById(id); if (el) el.textContent = text; };
 
-// Los mapas solo se inicializan cuando la sección de resultados es visible
-const resultadosSection = document.getElementById("resultados");
-const mapObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      initMaps();
-      mapObserver.disconnect();
-    }
+  setText("precip-value", pct + "%");
+  setText("total-factor", "×" + fmtComma(factorForPct(pct), 2));
+  setText("points-over", `${samplePoints.filter(p => valueForPoint(p, pct) > 10).length} / ${samplePoints.length}`);
+  const s = streamStats(pct);
+  setText("stream-mean", `${fmtComma(s.mean)} ± ${fmtComma(s.sd)} µg/L`);
+
+  const badge = document.getElementById("map-data-badge");
+  if (badge) {
+    const isReal = pct === PRECIP_REFERENCE_PCT;
+    badge.className = "data-badge " + (isReal ? "real" : "model");
+    badge.textContent = isReal ? (lang === "gl" ? "DATOS REAIS" : "REAL DATA") : (lang === "gl" ? "MODELO" : "MODEL");
+  }
+
+  document.querySelectorAll(".scenario-btn").forEach(btn => {
+    btn.classList.toggle("active", SCENARIO_PCT[btn.dataset.scenario] === pct);
   });
-}, { threshold: 0.1 });
 
-if (resultadosSection) mapObserver.observe(resultadosSection);
+  renderMapLegend();
+}
+
+function drawMainMarkers() {
+  updateMapUi();
+  if (!mainMap) return;
+
+  mainMarkers.forEach(m => mainMap.removeLayer(m));
+  mainMarkers = [];
+
+  const pct = currentPct();
+  const isReal = pct === PRECIP_REFERENCE_PCT;
+
+  samplePoints.forEach(p => {
+    const value = valueForPoint(p, pct);
+    const marker = L.circleMarker([p.lat, p.lon], {
+      radius: 7, fillColor: colorForValue(value), color: "#fff", weight: 1.5, fillOpacity: 0.9
+    }).addTo(mainMap);
+    marker.bindPopup(popupHtml(p, value, isReal));
+    mainMarkers.push(marker);
+  });
+}
+
+function initMap() {
+  if (mainMap) return;
+  mainMap = L.map("map-container", { center: [42.284, -8.112], zoom: 13 });
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution: "&copy; OpenStreetMap contributors", subdomains: "abc", maxZoom: 19
+  }).addTo(mainMap);
+  drawMainMarkers();
+}
+
+// ---------- Eventos ----------
+const precipSliderEl = document.getElementById("precip-slider");
+if (precipSliderEl) precipSliderEl.addEventListener("input", drawMainMarkers);
+
+document.querySelectorAll(".scenario-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    if (precipSliderEl) precipSliderEl.value = SCENARIO_PCT[btn.dataset.scenario];
+    drawMainMarkers();
+  });
+});
+
+// O mapa só se crea cando a sección é visible (Leaflet necesita un contedor con tamaño real)
+const resultadosSection = document.getElementById("resultados");
+if (resultadosSection) {
+  const mapObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        initMap();
+        mapObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.1 });
+  mapObserver.observe(resultadosSection);
+}
+
+// Ao cambiar de idioma (main.js actualiza <html lang>), refrescar lenda, etiquetas e popups
+new MutationObserver(() => drawMainMarkers())
+  .observe(document.documentElement, { attributes: true, attributeFilter: ["lang"] });
+
+updateMapUi();

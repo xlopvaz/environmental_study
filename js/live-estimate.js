@@ -1,5 +1,7 @@
-// ===== Estimación en directo do As (v3) =====
-// Cambios respecto á v2:
+// ===== Estimación en directo do As (v4) =====
+// v4: sen modelo de pH (o factor de pH valía 1,0 co pH de referencia); se a API falla ou tarda
+//     máis de 12 s, o banner agóchase en vez de quedar en "Cargando..."
+// Cambios da v3 respecto á v2:
 //  - Ventá de 120 días (4 meses, como na memoria) en vez de 30
 //  - Choiva actual e "normal" da mesma fonte (ERA5, Open-Meteo Archive);
 //    só os últimos días (que ERA5 aínda non ten) saen da previsión
@@ -8,12 +10,12 @@
 
 const LIVE_LAT = 42.284;
 const LIVE_LON = -8.112;
-const REFERENCE_PH = 6.75;        // pH de referencia do regato (rango típico: 6,5-7,0)
 const NORMAL_YEARS_BACK = 10;     // anos usados para a normal climática
 const WINDOW_DAYS = 120;          // días de choiva acumulada
 const ANCHOR_PCT = 175;           // % de choiva de marzo 2026 (ventá de 120 días) => factor 1
 const ARCHIVE_DELAY_DAYS = 7;     // ERA5 ten ~5 días de atraso; marxe de seguridade
 const LIVE_CACHE_KEY = "liveEstimateCacheV3";
+const LIVE_FETCH_TIMEOUT_MS = 12000; // se a API non responde neste tempo, dáse por fallida
 
 // OJO: o nome last30Sum consérvase por compatibilidade con main.js,
 // pero agora garda a suma de choiva da ventá (120 días)
@@ -28,6 +30,13 @@ function liveLocalDateStr(d) {
   const mm = String(d.getMonth() + 1).padStart(2, "0");
   const dd = String(d.getDate()).padStart(2, "0");
   return `${d.getFullYear()}-${mm}-${dd}`;
+}
+
+// fetch con tempo máximo de espera
+function liveFetch(url) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), LIVE_FETCH_TIMEOUT_MS);
+  return fetch(url, { signal: controller.signal }).finally(() => clearTimeout(timer));
 }
 
 // Suma de choiva en [fin - días + 1, fin]. getValue(data) devolve mm ou undefined/null
@@ -52,7 +61,7 @@ async function getArchiveData(endDate) {
   const url = `https://archive-api.open-meteo.com/v1/archive?latitude=${LIVE_LAT}&longitude=${LIVE_LON}` +
     `&start_date=${start}&end_date=${archiveEnd}&daily=precipitation_sum&timezone=Europe/Madrid`;
 
-  const response = await fetch(url);
+  const response = await liveFetch(url);
   if (!response.ok) throw new Error("Fallo na API do histórico climático");
   const data = await response.json();
 
@@ -82,7 +91,7 @@ async function getArchiveData(endDate) {
 function liveEstimateAs(pctOfNormal) {
   const baseline = samplePoints.slice(0, 22).reduce((a, p) => a + p.as, 0) / 22; // media do regato en marzo (m1-m22)
   const factor = ANCHOR_PCT / pctOfNormal;
-  return Math.round(baseline * factor * getPhFactor(REFERENCE_PH) * 10) / 10;
+  return Math.round(baseline * factor * 10) / 10;
 }
 
 async function loadLiveEstimate() {
@@ -99,7 +108,7 @@ async function loadLiveEstimate() {
       `&daily=precipitation_sum&past_days=14&forecast_days=1&timezone=Europe/Madrid`;
 
     const [forecast, archive] = await Promise.all([
-      fetch(forecastUrl).then(r => { if (!r.ok) throw new Error("Fallo na API meteorolóxica"); return r.json(); }),
+      liveFetch(forecastUrl).then(r => { if (!r.ok) throw new Error("Fallo na API meteorolóxica"); return r.json(); }),
       getArchiveData(endDate)
     ]);
 
@@ -127,6 +136,8 @@ async function loadLiveEstimate() {
     }
   } catch (error) {
     console.error("Erro cargando datos meteorolóxicos:", error);
+    const failedBanner = document.getElementById("live-banner");
+    if (failedBanner) failedBanner.style.display = "none"; // sen datos, mellor non amosar nada
     const lang = currentLang === "gl" ? "gl" : "en";
     const errMsg = {
       gl: "Non se puideron cargar os datos meteorolóxicos en tempo real neste momento.",
@@ -227,6 +238,7 @@ function renderLiveBanner() {
   };
   const l = labels[lang];
 
+  banner.style.display = "";
   banner.className = "live-banner " + (overLimit ? "over" : "ok");
   banner.innerHTML = `
     <span class="live-banner-icon">${weatherIcon(current.weather_code)}</span>

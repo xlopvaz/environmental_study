@@ -52,11 +52,11 @@ const faqItems = [
   {
     gl: {
       q: "Como se relaciona isto coa antiga mina de Santa Cristina?",
-      a: "A zona termal/mineira próxima ao encoro do río Miño (punto m25 deste estudo) mostrou niveis moi elevados de wolframio (ata 46 µg/L en auga e 25.319 mg/g en sedimento), un trazador claro da actividade mineira histórica. Isto suxire que a xeoloxía mineralizada da rexión podería influír tamén na presenza natural doutros elementos traza, incluído o As, aínda que a problemática principal do As reside no propio regato de Nogueiredo, non nesta zona illada."
+      a: "A zona termal/mineira próxima ao encoro do río Miño (punto m25 deste estudo) mostrou niveis moi elevados de wolframio (ata 46 µg/L en auga e 25.319 mg/kg en sedimento), un trazador claro da actividade mineira histórica. Isto suxire que a xeoloxía mineralizada da rexión podería influír tamén na presenza natural doutros elementos traza, incluído o As, aínda que a problemática principal do As reside no propio regato de Nogueiredo, non nesta zona illada."
     },
     en: {
       q: "How does this relate to the former Santa Cristina mine?",
-      a: "The thermal/mining zone near the Miño river reservoir (point m25 in this study) showed very high tungsten levels (up to 46 µg/L in water and 25,319 mg/g in sediment), a clear tracer of historical mining activity. This suggests the region's mineralized geology could also influence the natural presence of other trace elements, including As, although the main As issue lies in the Nogueiredo stream itself, not in this isolated zone."
+      a: "The thermal/mining zone near the Miño river reservoir (point m25 in this study) showed very high tungsten levels (up to 46 µg/L in water and 25,319 mg/kg in sediment), a clear tracer of historical mining activity. This suggests the region's mineralized geology could also influence the natural presence of other trace elements, including As, although the main As issue lies in the Nogueiredo stream itself, not in this isolated zone."
     }
   },
   {
