@@ -208,7 +208,7 @@ function renderLiveCard(current, windowSum, pctOfNormal, climateNormal) {
       <div class="live-estimate-value">${estimatedAs} µg/L</div>
       <div class="live-estimate-msg">${overLimit ? l.overMsg : l.okMsg}</div>
     </div>
-    <p class="live-normal-note">${l.provisional}</p>
+    <p class="live-provisional-note">${l.provisional}</p>
   `;
 }
 
