@@ -1,3 +1,4 @@
+Chart.defaults.maintainAspectRatio = false;
 // ===== Matriz de correlacións =====
 function corrColor(value) {
   if (value >= 0) {

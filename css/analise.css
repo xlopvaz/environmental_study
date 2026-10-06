@@ -406,3 +406,9 @@
   background: #262a31;
   border-color: var(--color-borde);
 }
+
+.chart-container { position: relative; height: 350px; }
+
+@media (max-width: 600px) {
+  .chart-container { height: 320px; padding: 0.5rem; }
+}
