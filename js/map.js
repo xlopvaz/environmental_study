@@ -1,12 +1,14 @@
 // ===== Mapa interactivo do As segundo a choiva (modelo da memoria) =====
 // Factor de dilución = 150 / % de choiva acumulada (4 meses) respecto á referencia 1991-2020.
 // Marzo de 2026 = 150 % => factor 1 => son os valores realmente medidos (ICP-MS-TOF).
-// Calquera outro % é unha estimación do modelo.
+// Entre 50 % e 150 %: estimación do modelo (rango que contempla o estudo).
+// Fóra de 50-150 %: extrapolación sen datos que a apoien (márcase como tal).
 
 let mainMap = null;       // nomes mantidos porque main.js chama a drawMainMarkers() ao cambiar de idioma
 let mainMarkers = [];
 
 const PRECIP_REFERENCE_PCT = 150;
+const MODEL_MIN_PCT = 50;   // límite seco do rango que contempla o modelo
 const SCENARIO_PCT = { wet: 150, normal: 100, dry: 50 };
 const STREAM_POINTS = 22; // m1-m22; m23-m24 = mestura co Miño, m25 = zona termal
 
@@ -24,6 +26,13 @@ function valueForPoint(point, pct) {
   return Math.round(point.as * factorForPct(pct) * 10) / 10;
 }
 
+// "real" = 150 % (medido); "model" = 50-149 %; "extrap" = fóra de 50-150 %
+function dataState(pct) {
+  if (pct === PRECIP_REFERENCE_PCT) return "real";
+  if (pct >= MODEL_MIN_PCT && pct < PRECIP_REFERENCE_PCT) return "model";
+  return "extrap";
+}
+
 function colorForValue(value) {
   if (value <= 10) return "#4a7c59";
   if (value <= 20) return "#c8a84b";
@@ -31,16 +40,17 @@ function colorForValue(value) {
   return "#c0392b";
 }
 
-function popupHtml(point, value, isReal) {
+function popupHtml(point, value, state) {
   const tagLabels = {
-    gl: { real: "Dato real (ICP-MS-TOF)", model: "Estimación (modelo)", limit: "Límite legal: 10 µg/L" },
-    en: { real: "Real data (ICP-MS-TOF)", model: "Estimate (model)", limit: "Legal limit: 10 µg/L" }
+    gl: { real: "Dato real (ICP-MS-TOF)", model: "Estimación (modelo)", extrap: "Extrapolación (sen datos)", limit: "Límite legal: 10 µg/L" },
+    en: { real: "Real data (ICP-MS-TOF)", model: "Estimate (model)", extrap: "Extrapolation (no data)", limit: "Legal limit: 10 µg/L" }
   };
+  const tagColors = { real: "#4a7c59", model: "#c0793b", extrap: "#c0392b" };
   const t = tagLabels[mapLang()];
   return `
     <strong>${point.id.toUpperCase()}</strong><br>
     As: <strong>${value} µg/L</strong><br>
-    <span style="font-size:0.7rem;color:${isReal ? "#4a7c59" : "#c0793b"};font-weight:600;">${isReal ? t.real : t.model}</span><br>
+    <span style="font-size:0.7rem;color:${tagColors[state]};font-weight:600;">${t[state]}</span><br>
     <span style="font-size:0.72rem;color:#777;">${t.limit}</span>
   `;
 }
@@ -82,11 +92,25 @@ function updateMapUi() {
   const s = streamStats(pct);
   setText("stream-mean", `${fmtComma(s.mean)} ± ${fmtComma(s.sd)} µg/L`);
 
+  const state = dataState(pct);
   const badge = document.getElementById("map-data-badge");
   if (badge) {
-    const isReal = pct === PRECIP_REFERENCE_PCT;
-    badge.className = "data-badge " + (isReal ? "real" : "model");
-    badge.textContent = isReal ? (lang === "gl" ? "DATOS REAIS" : "REAL DATA") : (lang === "gl" ? "MODELO" : "MODEL");
+    const badgeText = {
+      gl: { real: "DATOS REAIS", model: "MODELO", extrap: "EXTRAPOLACIÓN" },
+      en: { real: "REAL DATA", model: "MODEL", extrap: "EXTRAPOLATION" }
+    };
+    badge.className = "data-badge " + state;
+    badge.textContent = badgeText[lang][state];
+  }
+
+  const note = document.getElementById("map-extrap-note");
+  if (note) {
+    const noteText = {
+      gl: "Fóra do rango contemplado polo modelo (50–150 %): é unha extrapolación sen datos que a apoien.",
+      en: "Outside the range covered by the model (50–150%): this is an extrapolation with no data to support it."
+    };
+    note.textContent = noteText[lang];
+    note.hidden = state !== "extrap";
   }
 
   document.querySelectorAll(".scenario-btn").forEach(btn => {
@@ -104,14 +128,17 @@ function drawMainMarkers() {
   mainMarkers = [];
 
   const pct = currentPct();
-  const isReal = pct === PRECIP_REFERENCE_PCT;
+  const state = dataState(pct);
+  const extrap = state === "extrap";
 
   samplePoints.forEach(p => {
     const value = valueForPoint(p, pct);
     const marker = L.circleMarker([p.lat, p.lon], {
-      radius: 7, fillColor: colorForValue(value), color: "#fff", weight: 1.5, fillOpacity: 0.9
+      radius: 7, fillColor: colorForValue(value),
+      color: extrap ? "#555" : "#fff", weight: extrap ? 2 : 1.5,
+      fillOpacity: extrap ? 0.55 : 0.9, dashArray: extrap ? "3 3" : null   // extrapolación: relleno tenue e bordo discontinuo
     }).addTo(mainMap);
-    marker.bindPopup(popupHtml(p, value, isReal));
+    marker.bindPopup(popupHtml(p, value, state));
     mainMarkers.push(marker);
   });
 }

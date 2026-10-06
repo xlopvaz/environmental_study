@@ -258,12 +258,12 @@ const measuredElements = {
 
 // Colores por categoría química (para pintar la tabla periódica y las fichas)
 const categoryColors = {
-  "alkali": "#e8a87c",
-  "alkaline-earth": "#c8a84b",
-  "transition": "#4a7c9e",
-  "post-transition": "#5f9ea0",
-  "metalloid": "#8e6b8f",
-  "nonmetal": "#5c8a5c",
+  "alkali": "#946c4f",
+  "alkaline-earth": "#887233",
+  "transition": "#497a9b",
+  "post-transition": "#4b7d7e",
+  "metalloid": "#8b698c",
+  "nonmetal": "#557f55",
   "actinide": "#a05c5c"
 };
 

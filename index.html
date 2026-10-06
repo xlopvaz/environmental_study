@@ -5,79 +5,176 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title data-i18n="site.title">Estudo Ambiental do Regato de Nogueiredo</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 </head>
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <body>
 
   <header>
     <div class="lang-switch">
-  <button id="btn-gl">GL</button>
-  <button id="btn-en">EN</button>
-  <button id="theme-toggle" aria-label="Cambiar tema">🌙</button>
-</div>
+      <button id="btn-gl">GL</button>
+      <button id="btn-en">EN</button>
+      <button id="theme-toggle" aria-label="Cambiar tema">🌙</button>
+    </div>
     <h1 data-i18n="site.title">Estudo Ambiental do Regato de Nogueiredo</h1>
     <p data-i18n="site.subtitle">Caracterización multielemental e isotópica dun sistema fluvial afectado por arsénico (Castrelo de Miño, Ourense)</p>
   </header>
 
-<nav>
-  <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú">☰</button>
-  <div class="nav-links" id="nav-links">
-   <a href="#inicio" data-i18n="nav.inicio">Inicio</a>
-    <a href="#resultados" data-i18n="nav.resultados">Resultados</a>
-   <a href="#resumo-resultados" data-i18n="nav.resumoResultados">Resumo de resultados</a>
-   <a href="#problema" data-i18n="nav.problema">O problema</a>
-   <a href="#historico" data-i18n="nav.historico">Cronoloxía</a>
-   <a href="#metodologia" data-i18n="nav.metodologia">Metodoloxía</a>
-   <a href="#elementos" data-i18n="nav.elementos">Elementos analizados</a>
-   <a href="#conclusiones" data-i18n="nav.conclusiones">Conclusións</a>
-   <a href="#faq" data-i18n="nav.faq">FAQ</a>
-   <a href="#glosario" data-i18n="nav.glosario">Glosario</a>
-   <a href="#sobre" data-i18n="nav.sobre">Sobre o proxecto</a>
-   <a href="analise.html" target="_blank" class="nav-cta" data-i18n="nav.analise">Análise avanzada →</a>
-  </div>
-</nav>
-
-<div class="live-banner" id="live-banner">
-  <span class="live-banner-loading" data-i18n="banner.loading">Cargando estimación en directo...</span>
-</div>
-
-<main>
-
-   <section id="inicio">
-  <h2 data-i18n="inicio.titulo">Inicio</h2>
-  <p data-i18n="inicio.intro">Aquí irá o resumo do proxecto.</p>
-
-  <div class="stats-grid">
-    <div class="stat-box">
-      <div class="stat-number">23</div>
-      <div data-i18n="inicio.stat1label">Elementos cuantificados</div>
+  <nav>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú">☰</button>
+    <div class="nav-links" id="nav-links">
+      <a href="#inicio" data-i18n="nav.inicio">Inicio</a>
+      <a href="#resultados" data-i18n="nav.resultados">Resultados</a>
+      <a href="#resumo-resultados" data-i18n="nav.resumoResultados">Resumo de resultados</a>
+      <a href="#problema" data-i18n="nav.problema">O problema</a>
+      <a href="#historico" data-i18n="nav.historico">Cronoloxía</a>
+      <a href="#metodologia" data-i18n="nav.metodologia">Metodoloxía</a>
+      <a href="#elementos" data-i18n="nav.elementos">Elementos analizados</a>
+      <a href="#conclusiones" data-i18n="nav.conclusiones">Conclusións</a>
+      <a href="#faq" data-i18n="nav.faq">FAQ</a>
+      <a href="#glosario" data-i18n="nav.glosario">Glosario</a>
+      <a href="#sobre" data-i18n="nav.sobre">Sobre o proxecto</a>
+      <a href="analise.html" target="_blank" class="nav-cta" data-i18n="nav.analise">Análise avanzada →</a>
     </div>
-    <div class="stat-box">
-      <div class="stat-number">27</div>
-      <div data-i18n="inicio.stat2label">Puntos de mostraxe</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-number" data-i18n="inicio.stat3value">5</div>
-      <div data-i18n="inicio.stat3label">Tipos de mostra</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-number">2</div>
-      <div data-i18n="inicio.stat4label">Campañas de campo</div>
-    </div>
+  </nav>
+
+  <div class="live-banner" id="live-banner">
+    <span class="live-banner-loading" data-i18n="banner.loading">Cargando estimación en directo...</span>
   </div>
 
-  <p data-i18n="inicio.cta">Explora os datos na táboa periódica interactiva ou consulta os resultados completos.</p>
-</section>
+  <main>
 
-<section id="problema">
-  <h2 data-i18n="problema.titulo">O problema</h2>
-  <p data-i18n="problema.p1">...</p>
-  <p data-i18n="problema.p2">...</p>
-  <p data-i18n="problema.p3">...</p>
-  <p data-i18n="problema.p4">...</p>
-</section>
-<section id="historico">
+    <section id="inicio">
+      <h2 data-i18n="inicio.titulo">Inicio</h2>
+      <p data-i18n="inicio.intro">Aquí irá o resumo do proxecto.</p>
+
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="stat-number">23</div>
+          <div data-i18n="inicio.stat1label">Elementos cuantificados</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number">27</div>
+          <div data-i18n="inicio.stat2label">Puntos de mostraxe</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number" data-i18n="inicio.stat3value">5</div>
+          <div data-i18n="inicio.stat3label">Tipos de mostra</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number">2</div>
+          <div data-i18n="inicio.stat4label">Campañas de campo</div>
+        </div>
+      </div>
+
+      <p data-i18n="inicio.cta">Explora os datos na táboa periódica interactiva ou consulta os resultados completos.</p>
+    </section>
+
+    <section id="resultados">
+      <h2 data-i18n="resultados.titulo">Resultados</h2>
+      <p data-i18n="resultados.p1">Mapa interactivo coa concentración de arsénico ao longo do regato de Nogueiredo.</p>
+
+      <div class="data-warning">
+        <strong data-i18n="resultados.avisoTitulo">⚠ Datos reais vs. modelo preditivo</strong>
+        <p data-i18n="resultados.aviso">Os valores do escenario Húmido (150 % de choiva) son os medidos na campaña de marzo de 2026 mediante ICP-MS-TOF no CACTI (Universidade de Vigo). Os demais valores do mapa son estimacións dun modelo de dilución baseado nunha correlación empírica e non substitúen unha medida real.</p>
+      </div>
+
+      <h3 data-i18n="resultados.subtitulo1">Escenarios pluviométricos</h3>
+      <p data-i18n="resultados.sliderHint">Move a barra ou elixe un escenario para estimar o As en cada punto. Fai clic nun punto do mapa para ver o seu valor.</p>
+
+      <div class="scenario-selector">
+        <button class="scenario-btn active" id="btn-wet" data-scenario="wet">
+          <span class="data-badge real" data-i18n="resultados.badgeReal">DATOS REAIS</span>
+          <span class="scenario-icon">🌧️</span>
+          <span data-i18n="resultados.wet">Húmido</span>
+          <span class="scenario-range">7,6 – 16 µg/L</span>
+        </button>
+        <button class="scenario-btn" id="btn-normal" data-scenario="normal">
+          <span class="data-badge model" data-i18n="resultados.badgeModel">MODELO</span>
+          <span class="scenario-icon">⛅</span>
+          <span data-i18n="resultados.normal">Normal</span>
+          <span class="scenario-range">11 – 24 µg/L</span>
+        </button>
+        <button class="scenario-btn" id="btn-dry" data-scenario="dry">
+          <span class="data-badge model" data-i18n="resultados.badgeModel">MODELO</span>
+          <span class="scenario-icon">☀️</span>
+          <span data-i18n="resultados.dry">Seco</span>
+          <span class="scenario-range">23 – 48 µg/L</span>
+        </button>
+      </div>
+
+      <!-- As clases ph-* son herdadas do deseño anterior; só dan estilo ao contedor -->
+      <div class="ph-model">
+        <div class="ph-slider-group">
+          <label for="precip-slider">
+            <span data-i18n="resultados.precipLabel">Precipitación acumulada</span>:
+            <strong id="precip-value">150%</strong>
+            <span class="data-badge real" id="map-data-badge">DATOS REAIS</span>
+          </label>
+          <input type="range" id="precip-slider" min="30" max="200" value="150" step="5">
+          <!-- Zonas da barra, proporcionais a 30-50 / 50-150 / 150-200: modelo en verde, extrapolación raiada -->
+          <div class="zone-bar">
+            <div class="zone extrap" style="flex: 20"></div>
+            <div class="zone model" style="flex: 100"></div>
+            <div class="zone extrap" style="flex: 50"></div>
+          </div>
+          <div class="slider-scale"><span data-i18n="resultados.seco">Seco</span><span data-i18n="resultados.humedo">Húmido</span></div>
+          <div class="zone-legend">
+            <span><i class="zone-swatch model"></i><span data-i18n="resultados.zonaModelo">Rango contemplado polo modelo (50–150 %)</span></span>
+            <span><i class="zone-swatch extrap"></i><span data-i18n="resultados.zonaExtrap">Extrapolación (sen datos)</span></span>
+          </div>
+          <p class="extrap-note" id="map-extrap-note" hidden></p>
+        </div>
+
+        <div id="map-container" class="map-container"></div>
+        <div class="map-legend" id="map-legend"></div>
+
+        <div class="ph-stats">
+          <div class="stat-card">
+            <div class="stat-label" data-i18n="resultados.factorTotal">Factor total aplicado</div>
+            <div class="stat-value" id="total-factor">×1,00</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label" data-i18n="resultados.puntosSuperan">Puntos que superan o límite legal</div>
+            <div class="stat-value" id="points-over">14 / 25</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label" data-i18n="resultados.mediaRegato">Media do regato (m1–m22)</div>
+            <div class="stat-value" id="stream-mean">10,5 ± 1,9 µg/L</div>
+          </div>
+        </div>
+      </div>
+
+      <p class="map-note" data-i18n="resultados.modeloNota">Modelo de dilución: factor = 150 ÷ % de choiva acumulada (4 meses) respecto á referencia 1991–2020 (AEMET). Só marzo de 2026 (150 %) está medido; entre 50 % e 150 % son estimacións do modelo e fóra dese rango (zonas raiadas) son extrapolacións sen datos que as apoien. A media amósase ± desviación estándar entre os puntos m1–m22.</p>
+
+      <h3 data-i18n="resultados.subtitulo3">Estimación en tempo real</h3>
+      <p class="data-badge-inline">
+        <span class="data-badge model" data-i18n="resultados.badgeExp">EXPERIMENTAL</span>
+        <span data-i18n="resultados.liveDesc">Combina o tempo meteorolóxico actual en Castrelo de Miño co modelo de dilución pluviométrica.</span>
+      </p>
+
+      <div class="live-card" id="live-card">
+        <p class="live-loading" id="live-loading" data-i18n="resultados.liveLoading">Cargando datos meteorolóxicos...</p>
+      </div>
+
+      <p class="map-note" data-i18n="resultados.liveNota">Estimación orientativa e experimental: compara a choiva dos últimos 120 días coa media de 10 anos para as mesmas datas (ERA5, Open-Meteo) e aplica un factor de dilución calibrado con só dúas campañas (marzo e setembro de 2026). Non segue o mesmo cálculo que a barra do mapa e non substitúe unha medida real.</p>
+    </section>
+
+    <section id="resumo-resultados">
+      <h2 data-i18n="resumo.titulo">Resumo completo de resultados</h2>
+      <p data-i18n="resumo.intro">Despregue cada apartado para ver o detalle estatístico completo de cada aspecto do estudo.</p>
+
+      <div id="resumo-list" class="faq-list"></div>
+    </section>
+
+    <section id="problema">
+      <h2 data-i18n="problema.titulo">O problema</h2>
+      <p data-i18n="problema.p1">...</p>
+      <p data-i18n="problema.p2">...</p>
+      <p data-i18n="problema.p3">...</p>
+      <p data-i18n="problema.p4">...</p>
+    </section>
+
+    <section id="historico">
       <h2 data-i18n="historico.titulo">Cronoloxía da contaminación</h2>
       <p data-i18n="historico.intro">Principais fitos na xestión da calidade da auga no sistema de abastecemento de Nogueiredo.</p>
 
@@ -131,175 +228,91 @@
         </div>
       </div>
     </section>
+
+    <section id="metodologia">
+      <h2 data-i18n="metodologia.titulo">Metodoloxía</h2>
+      <p data-i18n="metodologia.p1">...</p>
+      <p data-i18n="metodologia.p2">...</p>
+
+      <h3 data-i18n="metodologia.subtitulo1">Técnicas instrumentais</h3>
+      <p data-i18n="metodologia.tecnicas">...</p>
+
+      <div class="icpms-diagram" id="icpms-diagram"></div>
+
+      <h3 data-i18n="metodologia.subtitulo2">Tratamento de datos</h3>
+      <p data-i18n="metodologia.datos">...</p>
+    </section>
+
+    <section id="elementos">
+      <h2 data-i18n="elementos.titulo">Elementos analizados</h2>
+      <p data-i18n="elementos.texto">Determináronse 23 elementos mediante ICP-MS-TOF. Fai clic en calquera elemento resaltado para ver os resultados.</p>
+      <div class="periodic-table" id="periodic-table"></div>
+      <div class="periodic-legend" id="periodic-legend"></div>
+      <div class="element-detail" id="element-detail">
+        <p class="element-detail-empty" data-i18n="elementos.hint">Selecciona un elemento para ver a información.</p>
+      </div>
+    </section>
+
+    <section id="conclusiones">
+      <h2 data-i18n="conclusiones.titulo">Conclusións</h2>
+      <p data-i18n="conclusiones.p1">...</p>
+      <p data-i18n="conclusiones.p2">...</p>
+      <p data-i18n="conclusiones.p3">...</p>
+    </section>
+
+    <div class="cta-banner">
+      <p data-i18n="cta.texto">Queres máis información técnica e detallada sobre este estudo?</p>
+      <a href="analise.html" target="_blank" class="cta-button" data-i18n="cta.boton">Consulta a análise avanzada →</a>
+    </div>
+
     <section id="faq">
       <h2 data-i18n="faq.titulo">Preguntas frecuentes</h2>
       <p data-i18n="faq.intro">Dúbidas habituais sobre a problemática do arsénico e este proxecto.</p>
 
       <div id="faq-list" class="faq-list"></div>
     </section>
-   <section id="metodologia">
-  <h2 data-i18n="metodologia.titulo">Metodoloxía</h2>
-  <p data-i18n="metodologia.p1">...</p>
-  <p data-i18n="metodologia.p2">...</p>
 
-<h3 data-i18n="metodologia.subtitulo1">Técnicas instrumentais</h3>
-<p data-i18n="metodologia.tecnicas">...</p>
+    <section id="glosario">
+      <h2 data-i18n="glosario.titulo">Glosario</h2>
+      <p data-i18n="glosario.intro">Termos técnicos empregados neste traballo, explicados en linguaxe sinxela.</p>
 
-<div class="icpms-diagram" id="icpms-diagram"></div>
-  <h3 data-i18n="metodologia.subtitulo2">Tratamento de datos</h3>
-  <p data-i18n="metodologia.datos">...</p>
-</section>
+      <input type="text" id="glossary-search" class="glossary-search" placeholder="">
 
-    <section id="elementos">
-      <h2 data-i18n="elementos.titulo">Elementos analizados</h2>
-      <p data-i18n="elementos.texto">Determináronse 23 elementos mediante ICP-MS-TOF. Fai clic en calquera elemento resaltado para ver os resultados.</p>
-      <div class="periodic-table" id="periodic-table"></div>
-<div class="periodic-legend" id="periodic-legend"></div>
-<div class="element-detail" id="element-detail">
-  <p class="element-detail-empty" data-i18n="elementos.hint">Selecciona un elemento para ver a información.</p>
-</div>
+      <div id="glossary-list" class="glossary-list"></div>
     </section>
 
+    <section id="sobre">
+      <h2 data-i18n="sobre.titulo">Sobre o proxecto</h2>
 
-<section id="resultados">
-      <h2 data-i18n="resultados.titulo">Resultados</h2>
-      <p data-i18n="resultados.p1">Mapa interactivo coa concentración de arsénico ao longo do regato de Nogueiredo.</p>
+      <h3 data-i18n="sobre.autoria">Autoría</h3>
+      <p data-i18n="sobre.autoriaTexto">...</p>
 
-      <div class="data-warning">
-        <strong data-i18n="resultados.avisoTitulo">⚠ Datos reais vs. modelo preditivo</strong>
-        <p data-i18n="resultados.aviso">Os valores do escenario Húmido (150 % de choiva) son os medidos na campaña de marzo de 2026 mediante ICP-MS-TOF no CACTI (Universidade de Vigo). Os demais valores do mapa son estimacións dun modelo de dilución baseado nunha correlación empírica e non substitúen unha medida real.</p>
-      </div>
+      <h3 data-i18n="sobre.recursos">Recursos</h3>
+      <ul class="resource-list">
+        <li><a href="https://github.com/xlopvaz/environmental_study" target="_blank" data-i18n="sobre.repo">Código fonte no repositorio de GitHub</a></li>
+      </ul>
 
-      <h3 data-i18n="resultados.subtitulo1">Escenarios pluviométricos</h3>
-      <p data-i18n="resultados.sliderHint">Move a barra ou elixe un escenario para estimar o As en cada punto. Fai clic nun punto do mapa para ver o seu valor.</p>
-
-      <div class="scenario-selector">
-        <button class="scenario-btn active" id="btn-wet" data-scenario="wet">
-          <span class="data-badge real" data-i18n="resultados.badgeReal">DATOS REAIS</span>
-          <span class="scenario-icon">🌧️</span>
-          <span data-i18n="resultados.wet">Húmido</span>
-          <span class="scenario-range">7,6 – 16 µg/L</span>
-        </button>
-        <button class="scenario-btn" id="btn-normal" data-scenario="normal">
-          <span class="data-badge model" data-i18n="resultados.badgeModel">MODELO</span>
-          <span class="scenario-icon">⛅</span>
-          <span data-i18n="resultados.normal">Normal</span>
-          <span class="scenario-range">11 – 24 µg/L</span>
-        </button>
-        <button class="scenario-btn" id="btn-dry" data-scenario="dry">
-          <span class="data-badge model" data-i18n="resultados.badgeModel">MODELO</span>
-          <span class="scenario-icon">☀️</span>
-          <span data-i18n="resultados.dry">Seco</span>
-          <span class="scenario-range">23 – 48 µg/L</span>
-        </button>
-      </div>
-
-      <!-- As clases ph-* son herdadas do deseño anterior; só dan estilo ao contedor -->
-      <div class="ph-model">
-        <div class="ph-slider-group">
-          <label for="precip-slider">
-            <span data-i18n="resultados.precipLabel">Precipitación acumulada</span>:
-            <strong id="precip-value">150%</strong>
-            <span class="data-badge real" id="map-data-badge">DATOS REAIS</span>
-          </label>
-          <input type="range" id="precip-slider" min="50" max="150" value="150" step="5">
-          <div class="slider-scale"><span data-i18n="resultados.seco">Seco</span><span data-i18n="resultados.humedo">Húmido</span></div>
-        </div>
-
-        <div id="map-container" class="map-container"></div>
-        <div class="map-legend" id="map-legend"></div>
-
-        <div class="ph-stats">
-          <div class="stat-card">
-            <div class="stat-label" data-i18n="resultados.factorTotal">Factor total aplicado</div>
-            <div class="stat-value" id="total-factor">×1,00</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label" data-i18n="resultados.puntosSuperan">Puntos que superan o límite legal</div>
-            <div class="stat-value" id="points-over">14 / 25</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label" data-i18n="resultados.mediaRegato">Media do regato (m1–m22)</div>
-            <div class="stat-value" id="stream-mean">10,5 ± 1,9 µg/L</div>
-          </div>
-        </div>
-      </div>
-
-      <p class="map-note" data-i18n="resultados.modeloNota">Modelo de dilución: factor = 150 ÷ % de choiva acumulada (4 meses) respecto á referencia 1991–2020 (AEMET). Marzo de 2026 (150 %) é a condición medida que se amosa no mapa; a barra cobre o rango 50–150 % que contempla o modelo. A media amósase ± desviación estándar entre os puntos m1–m22.</p>
-
-      <h3 data-i18n="resultados.subtitulo3">Estimación en tempo real</h3>
-      <p class="data-badge-inline">
-        <span class="data-badge model" data-i18n="resultados.badgeExp">EXPERIMENTAL</span>
-        <span data-i18n="resultados.liveDesc">Combina o tempo meteorolóxico actual en Castrelo de Miño co modelo de dilución pluviométrica.</span>
-      </p>
-
-      <div class="live-card" id="live-card">
-        <p class="live-loading" id="live-loading" data-i18n="resultados.liveLoading">Cargando datos meteorolóxicos...</p>
-      </div>
-
-      <p class="map-note" data-i18n="resultados.liveNota">Estimación orientativa e experimental: compara a choiva dos últimos 120 días coa media de 10 anos para as mesmas datas (ERA5, Open-Meteo) e aplica un factor de dilución calibrado con só dúas campañas (marzo e setembro de 2026). Non segue o mesmo cálculo que a barra do mapa e non substitúe unha medida real.</p>
+      <h3 data-i18n="sobre.contacto">Contacto</h3>
+      <ul class="resource-list contact-list">
+        <li>
+          <a href="mailto:xoel.lopez.vazquez@rai.usc.es">
+            <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            xoel.lopez.vazquez@rai.usc.es
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/xoellopezvazquez" target="_blank">
+            <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+        </li>
+      </ul>
     </section>
-  
-
-<section id="resumo-resultados">
-  <h2 data-i18n="resumo.titulo">Resumo completo de resultados</h2>
-  <p data-i18n="resumo.intro">Despregue cada apartado para ver o detalle estatístico completo de cada aspecto do estudo.</p>
-
-  <div id="resumo-list" class="faq-list"></div>
-</section>
-
-    <section id="conclusiones">
-  <h2 data-i18n="conclusiones.titulo">Conclusións</h2>
-  <p data-i18n="conclusiones.p1">...</p>
-  <p data-i18n="conclusiones.p2">...</p>
-  <p data-i18n="conclusiones.p3">...</p>
-</section>
-
-<div class="cta-banner">
-  <p data-i18n="cta.texto">Queres máis información técnica e detallada sobre este estudo?</p>
-  <a href="analise.html" target="_blank" class="cta-button" data-i18n="cta.boton">Consulta a análise avanzada →</a>
-</div>
-
-<section id="glosario">
-  <h2 data-i18n="glosario.titulo">Glosario</h2>
-  <p data-i18n="glosario.intro">Termos técnicos empregados neste traballo, explicados en linguaxe sinxela.</p>
-
-  <input type="text" id="glossary-search" class="glossary-search" placeholder="">
-
-  <div id="glossary-list" class="glossary-list"></div>
-</section>
-
-<section id="sobre">
-  <h2 data-i18n="sobre.titulo">Sobre o proxecto</h2>
-
-  <h3 data-i18n="sobre.autoria">Autoría</h3>
-  <p data-i18n="sobre.autoriaTexto">...</p>
-
-  <h3 data-i18n="sobre.recursos">Recursos</h3>
-  <ul class="resource-list">
-<li><a href="https://github.com/xlopvaz/environmental_study" target="_blank" data-i18n="sobre.repo">Código fonte no repositorio de GitHub</a></li>
-</ul>
-<h3 data-i18n="sobre.contacto">Contacto</h3>
-<ul class="resource-list contact-list">
-  <li>
-    <a href="mailto:xoel.lopez.vazquez@rai.usc.es ">
-      <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-      xoel.lopez.vazquez@rai.usc.es 
-    </a>
-  </li>
-  <li>
-    <a href="https://www.linkedin.com/in/xoellopezvazquez" target="_blank">
-      <svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-      LinkedIn
-    </a>
-  </li>
-</ul>
-</section>
 
   </main>
 
   <footer>
-    <p>&copy; 2026 · <span data-i18n="footer.texto">Universidade de Vigo</span></p>
+    <p>&copy; 2026 · Xoel López Vázquez · Marta Costas Rodríguez</p>
   </footer>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
@@ -309,16 +322,16 @@
   <script src="data/measured-elements.js"></script>
   <script src="data/sample-points.js"></script>
   <script src="data/glossary.js"></script>
+  <script src="data/faq.js"></script>
+  <script src="data/resultados-resumo.js"></script>
   <script src="js/periodic-table.js"></script>
   <script src="js/map.js"></script>
   <script src="js/live-estimate.js"></script>
   <script src="js/glossary.js"></script>
   <script src="js/icpms-diagram.js"></script>
-  <script src="js/main.js"></script>
-  <script src="data/faq.js"></script>
-  <script src="data/resultados-resumo.js"></script>
   <script src="js/faq.js"></script>
   <script src="js/resumo-resultados.js"></script>
   <script src="js/theme.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
