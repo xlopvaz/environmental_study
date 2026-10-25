@@ -185,42 +185,6 @@ function renderAsProfileChart() {
   });
 }
 
-// ===== Perfil isotópico de Sr =====
-let srChart = null;
-
-function renderSrProfileChart() {
-  const canvas = document.getElementById("chart-sr-profile");
-  if (!canvas) return;
-
-  const labels = srIsotopeData.map(p => p.point);
-  const values = srIsotopeData.map(p => p.ratio);
-
-  if (srChart) srChart.destroy();
-
-  srChart = new Chart(canvas, {
-    type: "line",
-    data: {
-      labels: labels,
-      datasets: [{
-        label: "87Sr/86Sr",
-        data: values,
-        borderColor: "#3e7c59",
-        backgroundColor: "rgba(62,124,89,0.08)",
-        fill: true,
-        tension: 0.15,
-        pointRadius: 4
-      }]
-    },
-    options: {
-      responsive: true,
-      plugins: { legend: { display: false } },
-      scales: {
-        y: { title: { display: true, text: "87Sr/86Sr" } },
-        x: { title: { display: true, text: currentLang === "gl" ? "Punto (augas arriba → desembocadura)" : "Point (upstream → mouth)" } }
-      }
-    }
-  });
-}
 
 // ===== PCA esquemático =====
 const pcaQuadrantData = {

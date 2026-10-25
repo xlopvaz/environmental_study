@@ -412,3 +412,9 @@
 @media (max-width: 600px) {
   .chart-container { height: 320px; padding: 0.5rem; }
 }
+
+/* Gráfica de isótopos de Sr: máis alta para que se lea a inversión */
+.chart-container.chart-container-tall { height: 420px; }
+@media (max-width: 600px) {
+  .chart-container.chart-container-tall { height: 380px; }
+}
